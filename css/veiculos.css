@@ -113,6 +113,13 @@
   width: 100%;
 }
 
+/* Espaço reservado para a foto do veículo (sem imagens por agora) */
+.card-veiculo__foto {
+  aspect-ratio: 4 / 3;
+  background-color: var(--cor-fundo-alt);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
 /* ---------- Tablet ---------- */
 @media (min-width: 600px) {
   .filtros__form {
