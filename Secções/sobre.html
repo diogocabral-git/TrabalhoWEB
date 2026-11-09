@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <!-- Cabeçalho do documento: codificação, viewport para telemóveis, título, descrição e folhas de estilo -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Conhece o GaragemFácil: quem somos, a nossa história e a equipa que te ajuda a encontrar o próximo carro.">
-  <title>Sobre nós | GaragemFácil</title>
-  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
-  <link rel="stylesheet" href="../css/style.css">
-  <!-- Estilos próprios da página Sobre nós -->
-  <link rel="stylesheet" href="../css/sobre.css">
+  <title>GaragemFácil | Sobre nós</title>
+  <!-- Ligação à folha de estilos única do site (css/estilos.css) -->
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-  <!-- HEADER: logótipo em texto, botão hambúrguer (só no mobile) e menu principal -->
-  <header class="site-header">
-    <div class="container">
+  <!-- ===== CABEÇALHO =====
+       Logótipo em texto, botão hambúrguer (só no telemóvel) e menu principal -->
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
       <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
-      <!-- Botão hambúrguer: abre e fecha o menu no mobile (controlado por js/main.js) -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <!-- Botão hambúrguer: abre e fecha o menu no telemóvel (controlado por js/main.js) -->
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Menu de navegação; a classe "ativo" marca a página atual -->
-      <nav id="menu" class="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="inicio.html">Início</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="sobre.html" class="ativo" aria-current="page">Sobre nós</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
+      <nav id="menu" class="navegacao" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a class="menu__link" href="inicio.html">Início</a></li>
+          <li><a class="menu__link" href="veiculos.html">Veículos</a></li>
+          <li><a href="sobre.html" class="menu__link menu__link--ativo" aria-current="page">Sobre nós</a></li>
+          <li><a class="menu__link" href="contactos.html">Contactos</a></li>
         </ul>
       </nav>
     </div>
@@ -39,16 +38,16 @@
   <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
   <main>
     <!-- Banner do topo com o título da página e uma frase de apresentação -->
-    <section class="page-banner">
-      <div class="container">
+    <section class="faixa-titulo">
+      <div class="contentor">
         <h1>Sobre nós</h1>
         <p>Há mais de 15 anos a ajudar quem procura um carro usado de confiança.</p>
       </div>
     </section>
 
-    <!-- Secção "A nossa história": texto à esquerda e espaço para imagem à direita (empilhado no mobile) -->
+    <!-- Secção "A nossa história": texto à esquerda e espaço para imagem à direita (empilhado no telemóvel) -->
     <section class="sobre-historia">
-      <div class="container sobre-historia__grid">
+      <div class="contentor sobre-historia__grelha">
         <div class="sobre-historia__texto">
           <h2>A nossa história</h2>
           <p>O GaragemFácil nasceu em 2010 como uma pequena oficina de bairro. Com o tempo, os clientes começaram a pedir-nos ajuda para comprar e vender carros, e foi assim que abrimos o nosso stand.</p>
@@ -61,10 +60,10 @@
 
     <!-- Secção "Porquê escolher-nos": quatro cartões com as vantagens do stand -->
     <section class="sobre-valores">
-      <div class="container">
+      <div class="contentor">
         <h2>Porquê escolher-nos</h2>
-        <!-- Grelha de cartões: 1 coluna no mobile, 2 no tablet e 4 no desktop -->
-        <ul class="valores-grid">
+        <!-- Grelha de cartões: 1 coluna no telemóvel, 2 no tablet e 4 no computador -->
+        <ul class="grelha-valores">
           <li class="valor">
             <span class="valor__icone" aria-hidden="true">&#10003;</span>
             <h3>Veículos revistos</h3>
@@ -91,10 +90,10 @@
 
     <!-- Secção "A nossa equipa": um cartão por membro com foto, nome e função -->
     <section class="sobre-equipa">
-      <div class="container">
+      <div class="contentor">
         <h2>A nossa equipa</h2>
-        <!-- Grelha da equipa: 1 coluna no mobile, 3 a partir do tablet -->
-        <ul class="equipa-grid">
+        <!-- Grelha da equipa: 1 coluna no telemóvel, 3 a partir do tablet -->
+        <ul class="grelha-equipa">
           <li class="membro">
             <div class="membro__foto" aria-hidden="true"></div>
             <h3>João Silva</h3>
@@ -115,23 +114,24 @@
     </section>
 
     <!-- Chamada para ação: botões para ver os veículos ou contactar o stand -->
-    <section class="sobre-cta">
-      <div class="container">
+    <section class="sobre-chamada">
+      <div class="contentor">
         <h2>Encontra o teu próximo carro</h2>
         <p>Vê os veículos disponíveis ou fala connosco.</p>
-        <div class="sobre-cta__botoes">
-          <a href="veiculos.html" class="btn btn-primario">Ver veículos</a>
-          <a href="contactos.html" class="btn btn-secundario">Contactar</a>
+        <div class="sobre-chamada__botoes">
+          <a href="veiculos.html" class="botao botao--primario">Ver veículos</a>
+          <a href="contactos.html" class="botao botao--secundario">Contactar</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER: apresentação, links de navegação, contactos e direitos de autor -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grelha">
-        <div class="footer-coluna">
+  <!-- ===== RODAPÉ =====
+       Apresentação, links de navegação, contactos e direitos de autor -->
+  <footer class="rodape">
+    <div class="contentor">
+      <div class="rodape__grelha">
+        <div class="rodape__coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
           <div class="redes-sociais">
@@ -144,17 +144,19 @@
           </div>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Navegação</h2>
           <ul>
             <li><a href="inicio.html">Início</a></li>
             <li><a href="veiculos.html">Veículos</a></li>
             <li><a href="sobre.html">Sobre nós</a></li>
             <li><a href="contactos.html">Contactos</a></li>
+            <!-- Volta ao cabeçalho (id="topo") -->
+            <li><a href="#topo">Voltar ao topo ↑</a></li>
           </ul>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Contactos</h2>
           <ul>
             <li>Rua do Stand, 123, Coimbra</li>
@@ -165,11 +167,11 @@
         </div>
       </div>
 
-      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+      <p class="rodape__direitos">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 
-  <!-- Script comum: menu hambúrguer e ano atual no footer -->
+  <!-- Script comum: menu hambúrguer e ano atual no rodapé -->
   <script src="../js/main.js"></script>
 </body>
 </html>

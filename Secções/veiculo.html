@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <!-- Codificação de caracteres (para aceitar acentos como "á" e "ç") -->
   <meta charset="UTF-8">
@@ -8,42 +8,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Título que aparece no separador do browser e nos resultados de pesquisa -->
-  <title>Peugeot 308 1.2 PureTech Allure | GaragemFácil</title>
+  <title>GaragemFácil | Peugeot 308 1.2 PureTech Allure</title>
 
   <!-- Descrição curta da página para os motores de pesquisa -->
   <meta name="description" content="Peugeot 308 1.2 PureTech Allure de 2021, gasolina, 45 000 km. Veja as fotos, a ficha técnica e contacte o stand GaragemFácil.">
 
-  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
-  <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Estilos próprios desta página de detalhe -->
-  <link rel="stylesheet" href="../css/veiculo.css">
+  <!-- Ligação à folha de estilos única do site (css/estilos.css) -->
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
-  <!-- ===== HEADER =====
+  <!-- ===== CABEÇALHO =====
        Cabeçalho comum a todas as páginas (copiado de modelo.html).
        Tem o logótipo em texto, o botão do menu hambúrguer (só aparece
        no telemóvel) e o menu principal com "Veículos" marcado como ativo. -->
-  <header class="site-header">
-    <div class="container">
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
       <!-- Logótipo em texto: leva de volta à página inicial -->
       <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
       <!-- Botão hambúrguer: as 3 <span> são as 3 riscas; o js/main.js abre e fecha o menu -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Menu principal do site -->
-      <nav id="menu" class="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="inicio.html">Início</a></li>
-          <li><a href="veiculos.html" class="ativo" aria-current="page">Veículos</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
+      <nav id="menu" class="navegacao" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a class="menu__link" href="inicio.html">Início</a></li>
+          <li><a href="veiculos.html" class="menu__link menu__link--ativo" aria-current="page">Veículos</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre nós</a></li>
+          <li><a class="menu__link" href="contactos.html">Contactos</a></li>
         </ul>
       </nav>
     </div>
@@ -51,11 +48,11 @@
 
   <!-- ===== CONTEÚDO PRINCIPAL =====
        Tudo o que é específico desta página de detalhe do veículo. -->
-  <main class="container detalhe">
+  <main class="contentor detalhe">
 
-    <!-- Caminho de navegação (breadcrumb): mostra onde o utilizador está
+    <!-- Caminho de navegação: mostra onde o utilizador está
          e permite voltar à página inicial ou à listagem -->
-    <nav class="breadcrumb" aria-label="Caminho">
+    <nav class="caminho" aria-label="Caminho">
       <ol>
         <li><a href="inicio.html">Início</a></li>
         <li><a href="veiculos.html">Veículos</a></li>
@@ -64,8 +61,8 @@
     </nav>
 
     <!-- Grelha da página: no telemóvel as 4 secções ficam empilhadas;
-         no desktop ficam em 2 colunas (ver css/veiculo.css) -->
-    <div class="detalhe-grid">
+         no computador ficam em 2 colunas (ver css/estilos.css, secção 11) -->
+    <div class="detalhe__grelha">
 
       <!-- GALERIA DE FOTOS
            Espaço grande para a foto principal e 4 miniaturas por baixo.
@@ -73,16 +70,16 @@
            miniatura, o js/veiculo.js mostra essa vista no espaço grande. -->
       <section class="galeria" aria-label="Fotografias do veículo">
         <!-- Espaço da foto principal -->
-        <div class="galeria-principal foto-placeholder" id="foto-principal" role="img" aria-label="Espaço para a foto do Peugeot 308: frente">
+        <div class="galeria__principal espaco-foto" id="foto-principal" role="img" aria-label="Espaço para a foto do Peugeot 308: frente">
           <span>Frente</span>
         </div>
 
         <!-- Miniaturas: cada botão guarda em data-legenda o nome da vista -->
-        <ul class="galeria-miniaturas">
-          <li><button type="button" class="miniatura foto-placeholder ativa" data-legenda="Frente" aria-label="Ver foto da frente"><span>Frente</span></button></li>
-          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Lateral" aria-label="Ver foto da lateral"><span>Lateral</span></button></li>
-          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Traseira" aria-label="Ver foto da traseira"><span>Traseira</span></button></li>
-          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Interior" aria-label="Ver foto do interior"><span>Interior</span></button></li>
+        <ul class="galeria__miniaturas">
+          <li><button type="button" class="galeria__miniatura espaco-foto galeria__miniatura--ativa" data-legenda="Frente" aria-label="Ver foto da frente"><span>Frente</span></button></li>
+          <li><button type="button" class="galeria__miniatura espaco-foto" data-legenda="Lateral" aria-label="Ver foto da lateral"><span>Lateral</span></button></li>
+          <li><button type="button" class="galeria__miniatura espaco-foto" data-legenda="Traseira" aria-label="Ver foto da traseira"><span>Traseira</span></button></li>
+          <li><button type="button" class="galeria__miniatura espaco-foto" data-legenda="Interior" aria-label="Ver foto do interior"><span>Interior</span></button></li>
         </ul>
       </section>
 
@@ -94,20 +91,20 @@
         <h1 id="titulo-veiculo">Peugeot 308 <span>1.2 PureTech Allure</span></h1>
 
         <!-- Preço em destaque -->
-        <p class="preco">16 900 €</p>
+        <p class="resumo__preco">16 900 €</p>
 
         <!-- Destaques: cada caixa tem um rótulo pequeno e o valor -->
-        <ul class="destaques">
-          <li><span class="destaque-rotulo">Ano</span> 2021</li>
-          <li><span class="destaque-rotulo">Quilómetros</span> 45 000 km</li>
-          <li><span class="destaque-rotulo">Combustível</span> Gasolina</li>
-          <li><span class="destaque-rotulo">Caixa</span> Manual</li>
+        <ul class="resumo__dados">
+          <li><span class="resumo__rotulo">Ano</span> 2021</li>
+          <li><span class="resumo__rotulo">Quilómetros</span> 45 000 km</li>
+          <li><span class="resumo__rotulo">Combustível</span> Gasolina</li>
+          <li><span class="resumo__rotulo">Caixa</span> Manual</li>
         </ul>
 
         <!-- Botões de ação: um salta para o formulário, o outro liga para o stand -->
-        <div class="resumo-acoes">
-          <a href="#contactar" class="btn btn-primary">Contactar o stand</a>
-          <a href="tel:+351239000000" class="btn btn-secundario">Ligar: 239 000 000</a>
+        <div class="resumo__acoes">
+          <a href="#contactar" class="botao botao--primario">Contactar o stand</a>
+          <a href="tel:+351239000000" class="botao botao--secundario">Ligar: 239 000 000</a>
         </div>
       </section>
 
@@ -121,10 +118,10 @@
         <!-- Ficha técnica: tabela com uma linha por característica.
              O "tabela-wrapper" deixa fazer scroll lateral se não couber no ecrã. -->
         <h2>Ficha técnica</h2>
-        <div class="tabela-wrapper">
+        <div class="tabela-contentor">
           <table class="ficha-tecnica">
             <!-- Título da tabela, escondido no ecrã mas lido pelos leitores de ecrã -->
-            <caption class="sr-only">Ficha técnica do Peugeot 308</caption>
+            <caption class="so-leitores">Ficha técnica do Peugeot 308</caption>
             <tbody>
               <tr><th scope="row">Marca</th><td>Peugeot</td></tr>
               <tr><th scope="row">Modelo</th><td>308</td></tr>
@@ -142,7 +139,7 @@
           </table>
         </div>
 
-        <!-- Lista de equipamento (1 coluna no telemóvel, 2 a partir de 600px) -->
+        <!-- Lista de equipamento (1 coluna no telemóvel, 2 a partir de 640px) -->
         <h2>Equipamento</h2>
         <ul class="equipamento">
           <li>Ar condicionado automático</li>
@@ -163,23 +160,29 @@
 
         <!-- Formulário: cada campo tem a sua etiqueta (label) ligada pelo "for"/"id".
              "required" obriga a preencher o campo antes de enviar. -->
-        <form class="form-contacto" action="#" method="post">
+        <form class="formulario" action="#" method="post">
           <!-- Nome do cliente (obrigatório) -->
           <div class="campo">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" autocomplete="name" required>
+            <label for="nome">Nome <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input type="text" id="nome" name="nome" autocomplete="name" minlength="3" required aria-describedby="ajuda-nome">
+            <!-- Mensagem de ajuda, só visível se o campo for inválido (ver CSS) -->
+            <small class="campo__ajuda" id="ajuda-nome">Escreve pelo menos 3 letras.</small>
           </div>
 
           <!-- Email do cliente (obrigatório; o browser valida o formato) -->
           <div class="campo">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+            <label for="email">Email <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="ajuda-email">
+            <!-- Mensagem de ajuda, só visível se o email estiver mal escrito -->
+            <small class="campo__ajuda" id="ajuda-email">Formato esperado: nome@dominio.pt</small>
           </div>
 
-          <!-- Telefone (opcional) -->
+          <!-- Telefone (opcional); o pattern obriga a 9 dígitos começados por 2 ou 9 -->
           <div class="campo">
-            <label for="telefone">Telefone</label>
-            <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+            <label for="telefone">Telefone <span class="campo__opcional">(opcional)</span></label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" pattern="[29][0-9]{8}" aria-describedby="ajuda-telefone">
+            <!-- Mensagem de ajuda, só visível se o número tiver o formato errado -->
+            <small class="campo__ajuda" id="ajuda-telefone">9 dígitos, sem espaços (ex: 912345678).</small>
           </div>
 
           <!-- Mensagem, já preenchida com o carro desta página -->
@@ -188,8 +191,8 @@
             <textarea id="mensagem" name="mensagem" rows="4" required>Olá, tenho interesse no Peugeot 308 1.2 PureTech Allure (2021). Ainda está disponível?</textarea>
           </div>
 
-          <!-- Botão de envio -->
-          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <!-- Botão de envio, a toda a largura da caixa -->
+          <button type="submit" class="botao botao--primario botao--bloco">Enviar mensagem</button>
         </form>
       </aside>
 
@@ -199,14 +202,14 @@
     <p class="voltar"><a href="veiculos.html">&larr; Voltar à listagem de veículos</a></p>
   </main>
 
-  <!-- ===== FOOTER =====
+  <!-- ===== RODAPÉ =====
        Rodapé comum a todas as páginas (copiado de modelo.html):
        apresentação e redes sociais, navegação e contactos do stand. -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grelha">
+  <footer class="rodape">
+    <div class="contentor">
+      <div class="rodape__grelha">
         <!-- Coluna 1: apresentação do stand e redes sociais -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
           <!-- Ícones das redes sociais desenhados em SVG -->
@@ -221,18 +224,20 @@
         </div>
 
         <!-- Coluna 2: ligações para as páginas do site -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Navegação</h2>
           <ul>
             <li><a href="inicio.html">Início</a></li>
             <li><a href="veiculos.html">Veículos</a></li>
             <li><a href="sobre.html">Sobre nós</a></li>
             <li><a href="contactos.html">Contactos</a></li>
+            <!-- Volta ao cabeçalho (id="topo") -->
+            <li><a href="#topo">Voltar ao topo ↑</a></li>
           </ul>
         </div>
 
         <!-- Coluna 3: morada, telefone, email e horário -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Contactos</h2>
           <ul>
             <li>Rua do Stand, 123, Coimbra</li>
@@ -244,7 +249,7 @@
       </div>
 
       <!-- Direitos de autor (o ano é atualizado pelo js/main.js) -->
-      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+      <p class="rodape__direitos">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Documento HTML5 em português -->
-<html lang="pt">
+<html lang="pt-PT">
 <!-- Cabeçalho do documento: codificação, título, descrição e folhas de estilo -->
 <head>
   <!-- Codificação UTF-8 para mostrar acentos corretamente -->
@@ -8,44 +8,43 @@
   <!-- Ajusta a página à largura do dispositivo (essencial para a responsividade) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Título que aparece no separador do browser -->
-  <title>Modelo | GaragemFácil</title>
+  <title>GaragemFácil | Modelo</title>
   <!-- Descrição da página para os motores de busca -->
-  <meta name="description" content="Modelo base das páginas do GaragemFácil: header, footer e cartão de veículo.">
-  <!-- Estilos comuns a todas as páginas -->
-  <link rel="stylesheet" href="../css/style.css">
-  <!-- CSS próprio de cada página a seguir, por exemplo: -->
-  <!-- <link rel="stylesheet" href="../css/inicio.css"> -->
+  <meta name="description" content="Modelo base das páginas do GaragemFácil: cabeçalho, rodapé e cartão de veículo.">
+  <!-- Ligação à folha de estilos única do site (css/estilos.css) -->
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
   <!--
     MODELO BASE
     Copiar o <header> e o <footer> abaixo para cada página.
-    Mudar a classe "ativo" (e aria-current="page") para o link da página atual.
+    Mudar a variante "menu__link--ativo" (e aria-current="page") para o link da página atual.
+    Todos os estilos estão em css/estilos.css: não é preciso criar CSS por página.
   -->
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="container">
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
       <!-- Logótipo em texto: leva à página inicial -->
       <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">
         Garagem<span>Fácil</span>
       </a>
 
-      <!-- Botão hambúrguer: só aparece no telemóvel e tablet, abre e fecha o menu (js/main.js) -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <!-- Botão hambúrguer: só aparece no telemóvel (até 768px), abre e fecha o menu (js/main.js) -->
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Menu principal de navegação: escondido no telemóvel até carregar no botão -->
-      <nav id="menu" class="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="inicio.html" class="ativo" aria-current="page">Início</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
+      <nav id="menu" class="navegacao" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="inicio.html" class="menu__link menu__link--ativo" aria-current="page">Início</a></li>
+          <li><a class="menu__link" href="veiculos.html">Veículos</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre nós</a></li>
+          <li><a class="menu__link" href="contactos.html">Contactos</a></li>
         </ul>
       </nav>
     </div>
@@ -56,39 +55,39 @@
   <main>
     <!-- Secção de exemplo com a grelha de cartões -->
     <section class="seccao">
-      <div class="container">
+      <div class="contentor">
         <!-- Título da secção -->
-        <h1 class="titulo-seccao">Exemplo de cartões de veículo</h1>
+        <h1 class="seccao__titulo">Exemplo de cartões de veículo</h1>
 
-        <!-- Grelha de veículos: 1 coluna no telemóvel, 2 no tablet e 3 no desktop -->
+        <!-- Grelha de veículos: 1 coluna no telemóvel, 2 no tablet e 3 no computador -->
         <div class="grelha-veiculos">
           <!-- Cartão de veículo (reutilizado no Início e na listagem): nome, informação, preço e botão -->
-          <article class="card-veiculo">
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo">
+            <div class="cartao-veiculo__corpo">
               <h3>Renault Clio 1.0 TCe</h3>
-              <p class="card-veiculo__info">2021 · Gasolina · 45 000 km</p>
-              <p class="card-veiculo__preco">14 900 €</p>
-              <a href="veiculo.html?id=1" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2021 · Gasolina · 45 000 km</p>
+              <p class="cartao-veiculo__preco">14 900 €</p>
+              <a href="veiculo.html?id=1" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
 
           <!-- Cartão de veículo: Peugeot 308 -->
-          <article class="card-veiculo">
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo">
+            <div class="cartao-veiculo__corpo">
               <h3>Peugeot 308 1.5 BlueHDi</h3>
-              <p class="card-veiculo__info">2020 · Gasóleo · 78 000 km</p>
-              <p class="card-veiculo__preco">17 500 €</p>
-              <a href="veiculo.html?id=2" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2020 · Gasóleo · 78 000 km</p>
+              <p class="cartao-veiculo__preco">17 500 €</p>
+              <a href="veiculo.html?id=2" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
 
           <!-- Cartão de veículo: Tesla Model 3 -->
-          <article class="card-veiculo">
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo">
+            <div class="cartao-veiculo__corpo">
               <h3>Tesla Model 3</h3>
-              <p class="card-veiculo__info">2022 · Elétrico · 30 000 km</p>
-              <p class="card-veiculo__preco">34 900 €</p>
-              <a href="veiculo.html?id=3" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2022 · Elétrico · 30 000 km</p>
+              <p class="cartao-veiculo__preco">34 900 €</p>
+              <a href="veiculo.html?id=3" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </div>
@@ -96,13 +95,13 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="container">
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <div class="contentor">
       <!-- Grelha de colunas do rodapé -->
-      <div class="footer-grelha">
+      <div class="rodape__grelha">
         <!-- Coluna 1: apresentação do stand e redes sociais -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
           <!-- Ícones das redes sociais (SVG desenhado no próprio HTML, sem imagens) -->
@@ -117,18 +116,20 @@
         </div>
 
         <!-- Coluna 2: atalhos para as páginas do site -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Navegação</h2>
           <ul>
             <li><a href="inicio.html">Início</a></li>
             <li><a href="veiculos.html">Veículos</a></li>
             <li><a href="sobre.html">Sobre nós</a></li>
             <li><a href="contactos.html">Contactos</a></li>
+            <!-- Volta ao cabeçalho (id="topo") -->
+            <li><a href="#topo">Voltar ao topo ↑</a></li>
           </ul>
         </div>
 
         <!-- Coluna 3: contactos do stand -->
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Contactos</h2>
           <ul>
             <li>Rua do Stand, 123, Coimbra</li>
@@ -140,7 +141,7 @@
       </div>
 
       <!-- Direitos de autor: o ano é preenchido pelo js/main.js -->
-      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+      <p class="rodape__direitos">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 

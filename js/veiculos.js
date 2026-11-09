@@ -1,6 +1,6 @@
 /* ==========================================================
    Página Veículos (Secções/veiculos.html)
-   - Abrir e fechar o painel de filtros no mobile
+   - Abrir e fechar o painel de filtros no telemóvel
    - Filtrar os cartões de veículo por marca, combustível,
      ano e preço
    ========================================================== */
@@ -9,7 +9,7 @@
 (function () {
   // Elementos da página que vamos usar
   var filtros = document.querySelector('.filtros');             // painel de filtros
-  var toggle = document.querySelector('.filtros__toggle');      // botão "Filtros" (mobile)
+  var toggle = document.querySelector('.filtros__botao');       // botão "Filtros" (telemóvel)
   var form = document.getElementById('filtros-form');           // formulário com os campos
   var cartoes = document.querySelectorAll('#lista-veiculos > li'); // um <li> por veículo
   var contagem = document.getElementById('contagem');           // texto "X veículos encontrados"
@@ -18,12 +18,12 @@
   // Se a página não tiver filtros, não há nada a fazer
   if (!filtros || !form) return;
 
-  // Marca que o JavaScript está ativo: o CSS passa a esconder os filtros no mobile
-  filtros.classList.add('com-js');
+  // Marca que o JavaScript está ativo: o CSS passa a esconder os filtros no telemóvel
+  filtros.classList.add('filtros--com-js');
 
   // Botão "Filtros": abre ou fecha o painel e atualiza o aria-expanded (acessibilidade)
   toggle.addEventListener('click', function () {
-    var aberto = filtros.classList.toggle('aberto');
+    var aberto = filtros.classList.toggle('filtros--aberto');
     toggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
   });
 
@@ -38,7 +38,7 @@
 
     // Percorre os cartões e compara com os atributos data-* de cada um
     cartoes.forEach(function (li) {
-      var c = li.querySelector('.card-veiculo').dataset;
+      var c = li.querySelector('.cartao-veiculo').dataset;
       var mostra =
         (!marca || c.marca === marca) &&
         (!combustivel || c.combustivel === combustivel) &&
@@ -63,8 +63,8 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     aplicarFiltros();
-    // No mobile, fecha o painel depois de aplicar para se verem os resultados
-    filtros.classList.remove('aberto');
+    // No telemóvel, fecha o painel depois de aplicar para se verem os resultados
+    filtros.classList.remove('filtros--aberto');
     toggle.setAttribute('aria-expanded', 'false');
   });
 

@@ -1,0 +1,1511 @@
+/* =========================================================
+   ESTILOS DO SITE "GARAGEMFÁCIL"
+   Uma só folha de estilos para todas as páginas (como nos
+   exemplos da aula).
+   Abordagem: MOBILE FIRST
+   -> Escrevemos primeiro os estilos para ecrãs pequenos.
+   -> No fim do ficheiro, com @media (min-width: ...),
+      acrescentamos os ajustes para ecrãs maiores.
+   Nomes das classes em português, no estilo BEM:
+     .bloco, .bloco__elemento, .bloco--variante
+   ========================================================= */
+
+
+/* ---------- 1. VARIÁVEIS (cores do logótipo, espaçamentos) ----------
+   Mudando um valor aqui, muda em todo o site. */
+:root {
+  --cor-primaria: #0a4d56;        /* azul petróleo do logo */
+  --cor-primaria-escura: #073840;
+  --cor-secundaria: #ff8210;      /* laranja do logo */
+  --cor-secundaria-escura: #e06f05;
+  --cor-texto: #222222;
+  --cor-texto-suave: #5f6b6d;
+  --cor-fundo: #ffffff;
+  --cor-fundo-alt: #f2f4f5;
+  --cor-borda: #dde2e4;
+  --cor-placeholder: #e5e7eb;     /* cinzento dos espaços reservados para fotos */
+  --cor-erro: #c62828;            /* campos de formulário inválidos */
+  --cor-sucesso: #2e7d32;         /* campos de formulário válidos */
+
+  --fonte: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --raio: 8px;                    /* cantos arredondados */
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --sombra-forte: 0 6px 18px rgba(0, 0, 0, 0.14);
+  --espaco: 1rem;
+  --largura-max: 1200px;          /* largura máxima do conteúdo */
+  --altura-cabecalho: 64px;      /* altura mínima do cabeçalho (usada nos elementos sticky) */
+  --transicao: 0.2s ease;
+}
+
+
+/* ---------- 2. RESET BÁSICO ---------- */
+
+/* padding e border passam a contar dentro da largura dos elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Deslocamento suave ao carregar em links internos (âncoras #) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Corpo da página: tipo de letra, cores base e coluna flex para o rodapé ficar sempre em baixo */
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* O conteúdo principal ocupa o espaço livre, empurrando o rodapé para o fundo */
+main {
+  flex: 1;
+}
+
+/* Imagens responsivas: nunca ultrapassam a largura do contentor */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cor base dos links */
+a {
+  color: var(--cor-primaria);
+}
+
+/* Cor dos links ao passar o rato */
+a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* Estilo comum a todos os títulos */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+  color: var(--cor-primaria);
+}
+
+/* Tamanho de letra fluido: clamp(mínimo, ideal, máximo) */
+h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.6rem); }
+h3 { font-size: 1.15rem; }
+
+/* Espaço por baixo de cada parágrafo */
+p {
+  margin: 0 0 1em;
+}
+
+/* Remove margens e recuo por defeito das listas */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Contorno laranja visível ao navegar com o teclado (acessibilidade) */
+:focus-visible {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 2px;
+}
+
+/* Texto escondido no ecrã mas lido pelos leitores de ecrã */
+.so-leitores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ---------- 3. CONTENTOR E SECÇÕES ----------
+   O contentor centra o conteúdo e limita a largura. */
+.contentor {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--espaco);
+  padding-right: var(--espaco);
+}
+
+/* Espaçamento vertical de cada secção da página */
+.seccao {
+  padding: 2rem 0;
+}
+
+/* Variante de secção com fundo cinzento claro, para alternar secções */
+.seccao--alt {
+  background-color: var(--cor-fundo-alt);
+}
+
+/* Título de uma secção, com espaço por baixo */
+.seccao__titulo {
+  margin-bottom: 1.25rem;
+}
+
+/* Banner do topo das páginas Sobre e Contactos: fundo azul e texto centrado a branco */
+.faixa-titulo {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+/* Título do banner a branco (os títulos são azuis por defeito) */
+.faixa-titulo h1 {
+  margin: 0 0 0.5rem;
+  color: #ffffff;
+}
+
+/* Frase de apresentação do banner, um pouco mais transparente */
+.faixa-titulo p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+
+/* ---------- 4. CABEÇALHO E MENU ---------- */
+
+/* Barra do topo: fica presa ao fazer scroll (sticky) */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  box-shadow: var(--sombra);
+}
+
+/* Dentro do cabeçalho: logo à esquerda e botão/menu à direita */
+.cabecalho__interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: var(--altura-cabecalho);
+}
+
+/* Logótipo em texto: "Garagem" a azul */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+/* Parte "Fácil" do logótipo a laranja */
+.logo span {
+  color: var(--cor-secundaria);
+}
+
+/* O logótipo mantém a cor ao passar o rato */
+.logo:hover {
+  color: var(--cor-primaria);
+}
+
+/* Botão hambúrguer (só no telemóvel): 3 traços empilhados */
+.botao-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: none;
+  border-radius: var(--raio);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Cada um dos três traços do botão hambúrguer */
+.botao-menu span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: var(--cor-primaria);
+  transition: transform var(--transicao), opacity var(--transicao);
+}
+
+/* Menu aberto (aria-expanded="true"): o traço de cima roda para formar um "X" */
+.botao-menu[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+/* Menu aberto: o traço do meio desaparece */
+.botao-menu[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Menu aberto: o traço de baixo roda para o outro lado */
+.botao-menu[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navegação: escondida no telemóvel até carregar no botão */
+.navegacao {
+  display: none;
+  width: 100%;
+  padding-bottom: 0.75rem;
+}
+
+/* Navegação visível quando o JavaScript lhe junta a variante --aberta */
+.navegacao--aberta {
+  display: block;
+}
+
+/* Lista de links do menu na vertical (telemóvel) */
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cada link do menu: área grande para tocar e linha separadora */
+.menu__link {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--cor-borda);
+  color: var(--cor-texto);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* O último link não tem linha separadora */
+.menu li:last-child .menu__link {
+  border-bottom: none;
+}
+
+/* Link ao passar o rato e link da página atual ficam a laranja */
+.menu__link:hover,
+.menu__link--ativo {
+  color: var(--cor-secundaria);
+}
+
+
+/* ---------- 5. COMPONENTES REUTILIZÁVEIS ---------- */
+
+/* Botão base: só contorno azul (usado em <a> e em <button>) */
+.botao {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio);
+  background-color: transparent;
+  color: var(--cor-primaria);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicao), color var(--transicao),
+    border-color var(--transicao);
+}
+
+/* Botão base ao passar o rato: fundo azul e texto branco */
+.botao:hover {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+/* Variante principal: fundo laranja */
+.botao--primario {
+  background-color: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+  color: #ffffff;
+}
+
+/* Botão principal ao passar o rato: laranja mais escuro */
+.botao--primario:hover {
+  background-color: var(--cor-secundaria-escura);
+  border-color: var(--cor-secundaria-escura);
+  color: #ffffff;
+}
+
+/* Variante secundária: só contorno, sem fundo (é o aspeto base do .botao) */
+.botao--secundario {
+  background-color: transparent;
+}
+
+/* Variante que ocupa toda a largura disponível */
+.botao--bloco {
+  display: block;
+  width: 100%;
+}
+
+/* Espaço reservado para fotografias (até haver fotos reais) */
+.espaco-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-fundo-alt);
+  color: var(--cor-texto-suave);
+  border: 2px dashed var(--cor-borda);
+  font-family: inherit;
+}
+
+
+/* ---------- 6. FORMULÁRIOS (base) ---------- */
+
+/* Caixas de texto e listas a toda a largura, com a fonte do site
+   (os inputs não herdam a fonte por defeito) */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font: inherit;
+  color: var(--cor-texto);
+  background-color: #ffffff;
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+/* A caixa de mensagem só se redimensiona na vertical */
+textarea {
+  resize: vertical;
+}
+
+/* :focus-visible → o campo que está a ser editado: borda azul e brilho suave */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--cor-primaria);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 77, 86, 0.2);
+}
+
+/* Etiquetas dos campos, por cima de cada campo */
+label {
+  display: block;
+  font-weight: 600;
+}
+
+/* Formulário: os grupos e os campos ficam uns por baixo dos outros */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* fieldset vem com borda e margens do browser: substituímos pelo nosso estilo */
+.grupo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;                   /* evita que o fieldset rebente a grelha em ecrãs estreitos */
+}
+
+/* Título do grupo (legend) */
+.grupo__titulo {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+/* Cada campo: label em cima, input no meio, mensagem de ajuda em baixo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Indicação "(opcional)" em cor mais suave */
+.campo__opcional {
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+}
+
+/* Asterisco dos campos obrigatórios */
+.obrigatorio {
+  color: var(--cor-secundaria);
+}
+
+/* ---- Estados de validação (sem JavaScript!) ----
+   :user-invalid só se aplica DEPOIS de o utilizador mexer no campo
+   (ao contrário de :invalid, que pinta tudo a vermelho logo ao abrir a página). */
+.campo input:user-invalid,
+.campo select:user-invalid,
+.campo textarea:user-invalid {
+  border-color: var(--cor-erro);
+}
+
+/* Campo preenchido corretamente: borda verde */
+.campo input:user-valid {
+  border-color: var(--cor-sucesso);
+}
+
+/* Mensagem de ajuda: escondida por defeito, mas continua a ocupar o seu espaço
+   (visibility: hidden), para o resto do formulário não "saltar" quando aparece */
+.campo__ajuda {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0.85rem;
+  color: var(--cor-erro);
+  transition: opacity var(--transicao);
+}
+
+/* ...e mostrada quando o campo ANTERIOR (+) é inválido */
+.campo input:user-invalid + .campo__ajuda,
+.campo textarea:user-invalid + .campo__ajuda {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Botões no fim do formulário */
+.formulario__acoes .botao {
+  width: 100%;
+}
+
+
+/* ---------- 7. GRELHA E CARTÃO DE VEÍCULO ----------
+   Usados no Início, na listagem de Veículos e no Modelo. */
+
+/* Grelha de cartões: 1 coluna no telemóvel (mais colunas nas media queries) */
+.grelha-veiculos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Na listagem cada cartão está num <li>: o item estica para os cartões
+   da mesma linha terem a mesma altura */
+.grelha-veiculos > li {
+  display: flex;
+}
+
+/* Cartão de veículo: caixa branca com borda, cantos arredondados e sombra */
+.cartao-veiculo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+/* Cartão sobe ligeiramente e ganha sombra ao passar o rato */
+.cartao-veiculo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-forte);
+}
+
+/* Espaço reservado para a fotografia do veículo, com proporção 4:3 */
+.cartao-veiculo__foto {
+  aspect-ratio: 4 / 3;
+  background-color: var(--cor-fundo-alt);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* Fotografia real do cartão (quando houver), recortada para encaixar no 4:3 */
+.cartao-veiculo > img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: var(--cor-fundo-alt);
+}
+
+/* Zona de texto do cartão, em coluna */
+.cartao-veiculo__corpo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Nome do veículo */
+.cartao-veiculo__corpo h3 {
+  margin-bottom: 0.25rem;
+}
+
+/* Linha de informação: ano, combustível e quilómetros */
+.cartao-veiculo__info {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Preço do veículo em destaque, a laranja */
+.cartao-veiculo__preco {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  margin-bottom: 1rem;
+}
+
+/* Empurra o botão para o fundo do cartão, alinhando cartões com alturas diferentes */
+.cartao-veiculo__corpo .botao {
+  margin-top: auto;
+}
+
+
+/* ---------- 8. RODAPÉ ---------- */
+
+/* Rodapé com fundo azul e texto claro */
+.rodape {
+  margin-top: 2rem;
+  padding: 2rem 0 1rem;
+  background-color: var(--cor-primaria);
+  color: #e6eeef;
+}
+
+/* Links do rodapé a branco */
+.rodape a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Links do rodapé a laranja ao passar o rato */
+.rodape a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* Títulos das colunas do rodapé */
+.rodape h2 {
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+/* Colunas do rodapé: uma por baixo da outra no telemóvel */
+.rodape__grelha {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Listas do rodapé sem marcadores */
+.rodape__coluna ul {
+  list-style: none;
+}
+
+/* Espaço entre os itens das listas do rodapé */
+.rodape__coluna li {
+  margin-bottom: 0.4rem;
+}
+
+/* Ícones das redes sociais lado a lado */
+.redes-sociais {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Cada ícone de rede social dentro de um círculo */
+.redes-sociais a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+/* Tamanho e cor dos ícones SVG: fill="currentColor" usa a cor do texto */
+.redes-sociais svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Linha de direitos de autor no fundo do rodapé */
+.rodape__direitos {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+
+/* ---------- 9. PÁGINA INÍCIO (inicio.html) ---------- */
+
+/* Hero: fundo em degradê com as cores do logótipo, texto branco e centrado */
+.hero {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-primaria-escura) 100%);
+  color: #ffffff;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+/* Título principal a branco (os títulos são azuis por defeito) */
+.hero h1 {
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  line-height: 1.2;
+}
+
+/* Frase por baixo do título, ligeiramente mais suave */
+.hero__subtitulo {
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+/* Caixa da pesquisa rápida: grelha com os campos empilhados no telemóvel */
+.pesquisa {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--cor-fundo);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-forte);
+  text-align: left;
+}
+
+/* Cada campo: etiqueta por cima e lista de opções por baixo */
+.pesquisa__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Etiquetas dos campos (Marca, Modelo) mais pequenas */
+.pesquisa label {
+  font-size: 0.85rem;
+  color: var(--cor-texto);
+}
+
+/* Botão Pesquisar: largura total no telemóvel e altura confortável para o dedo */
+.pesquisa__botao {
+  width: 100%;
+  min-height: 44px;
+}
+
+/* Linha com o título "Veículos em destaque" à esquerda e o link "Ver todos" à direita */
+.destaques__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Tira a margem do título para ficar alinhado com o link */
+.destaques__topo h2 {
+  margin: 0;
+}
+
+/* Link "Ver todos": sempre numa só linha e a negrito */
+.destaques__ver-todos {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+
+/* ---------- 10. PÁGINA VEÍCULOS (veiculos.html) ---------- */
+
+/* Espaço em cima e em baixo do conteúdo principal da página */
+.pagina-veiculos {
+  padding: 1.5rem 0 1rem;
+}
+
+/* Grelha que junta os filtros e os resultados (empilhados no telemóvel) */
+.veiculos__grelha {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Caixa do painel de filtros: fundo cinzento claro e cantos arredondados */
+.filtros {
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1rem;
+}
+
+/* Botão "Filtros" que abre e fecha o painel no telemóvel */
+.filtros__botao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  font-weight: 600;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
+/* Seta do botão "Filtros", com animação ao rodar */
+.filtros__botao span {
+  transition: transform var(--transicao);
+}
+
+/* Quando o painel está aberto, a seta aponta para cima */
+.filtros__botao[aria-expanded="true"] span {
+  transform: rotate(180deg);
+}
+
+/* Título "Filtros": escondido no telemóvel (já existe o botão), visível no computador */
+.filtros__titulo {
+  display: none;
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+}
+
+/* Formulário dos filtros: campos uns por baixo dos outros */
+.filtros__form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Com JavaScript, no telemóvel o formulário fica fechado até carregar em "Filtros".
+   Sem JavaScript os filtros ficam sempre visíveis. */
+.filtros--com-js:not(.filtros--aberto) .filtros__form {
+  display: none;
+}
+
+/* Etiquetas dos filtros um pouco mais pequenas */
+.filtros .campo label {
+  font-size: 0.95rem;
+}
+
+/* Linha com os botões Aplicar e Limpar lado a lado */
+.filtros__acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Os dois botões ocupam a mesma largura */
+.filtros__acoes .botao {
+  flex: 1;
+}
+
+/* Texto "X veículos encontrados" por cima da grelha */
+.resultados__contagem {
+  margin: 0 0 1rem;
+  color: var(--cor-texto-suave);
+}
+
+/* Mensagem mostrada quando nenhum veículo corresponde aos filtros */
+.resultados__vazio {
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+
+/* ---------- 11. PÁGINA DETALHE DO VEÍCULO (veiculo.html) ---------- */
+
+/* Espaço em cima e em baixo do conteúdo, entre o cabeçalho e o rodapé */
+.detalhe {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Caminho de navegação "Início / Veículos / Peugeot 308" em linha, sem marcadores */
+.caminho ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+/* Barra "/" a separar cada item do anterior (li + li → todos menos o primeiro) */
+.caminho li + li::before {
+  content: "/";
+  margin-right: 0.25rem;
+  opacity: 0.6;
+}
+
+/* Grelha da página: no telemóvel as 4 zonas ficam umas por baixo das outras */
+.detalhe__grelha {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "galeria"
+    "resumo"
+    "informacao"
+    "contacto";
+  gap: 1.5rem;
+}
+
+/* Liga cada secção do HTML à sua zona da grelha */
+.galeria    { grid-area: galeria; }
+.resumo     { grid-area: resumo; }
+.informacao { grid-area: informacao; }
+.contacto   { grid-area: contacto; }
+
+/* Espaço da foto principal, sempre na proporção 16:10 */
+.galeria__principal {
+  border-radius: var(--raio);
+  aspect-ratio: 16 / 10;
+  font-size: 1.25rem;
+}
+
+/* Fila de 4 miniaturas por baixo da foto principal */
+.galeria__miniaturas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+/* Cada miniatura é um botão com a mesma proporção da foto principal */
+.galeria__miniatura {
+  width: 100%;
+  padding: 0;
+  border-radius: calc(var(--raio) / 2);
+  cursor: pointer;
+  aspect-ratio: 16 / 10;
+  font-size: 0.75rem;
+}
+
+/* Miniatura selecionada (ou com o rato/teclado em cima): contorno na cor principal */
+.galeria__miniatura:hover,
+.galeria__miniatura:focus-visible,
+.galeria__miniatura--ativa {
+  border-style: solid;
+  border-color: var(--cor-primaria);
+}
+
+/* Nome do carro */
+.resumo h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  line-height: 1.2;
+}
+
+/* Versão do carro, numa linha própria e mais pequena */
+.resumo h1 span {
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0.75;
+}
+
+/* Preço grande e na cor principal */
+.resumo__preco {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+/* Dados principais (ano, km...) em grelha de 2 colunas no telemóvel */
+.resumo__dados {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+/* Cada dado é uma caixa com contorno e o valor a negrito */
+.resumo__dados li {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-weight: bold;
+}
+
+/* Rótulo pequeno em maiúsculas por cima do valor (ex.: "ANO") */
+.resumo__rotulo {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Botões de ação empilhados no telemóvel */
+.resumo__acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Títulos das secções de informação e do formulário */
+.informacao h2,
+.contacto h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* O primeiro título de cada secção não precisa de espaço em cima */
+.informacao h2:first-child,
+.contacto h2:first-child {
+  margin-top: 0;
+}
+
+/* Se a tabela não couber no ecrã, faz scroll só dentro desta caixa */
+.tabela-contentor {
+  overflow-x: auto;
+}
+
+/* Tabela da ficha técnica a ocupar toda a largura */
+.ficha-tecnica {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Células da tabela com espaço interior e uma linha por baixo */
+.ficha-tecnica th,
+.ficha-tecnica td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: left;
+}
+
+/* Coluna dos nomes (Marca, Modelo...) mais suave que a dos valores */
+.ficha-tecnica th {
+  width: 45%;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+/* Linhas pares com fundo ligeiramente cinzento, para facilitar a leitura */
+.ficha-tecnica tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Lista de equipamento numa coluna no telemóvel */
+.equipamento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* Caixa "Contactar o stand" com contorno e cantos arredondados */
+.contacto {
+  padding: 1.25rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-fundo);
+  scroll-margin-top: calc(var(--altura-cabecalho) + 1rem);
+}
+
+/* Espaço por cima da ligação "Voltar à listagem" */
+.voltar {
+  margin-top: 2rem;
+}
+
+
+/* ---------- 12. PÁGINA SOBRE NÓS (sobre.html) ---------- */
+
+/* Espaçamento vertical de cada secção */
+.sobre-historia,
+.sobre-valores,
+.sobre-equipa,
+.sobre-chamada {
+  padding: 2.5rem 0;
+}
+
+/* Títulos das secções centrados */
+.sobre-valores h2,
+.sobre-equipa h2,
+.sobre-chamada h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* História: grelha com uma coluna no telemóvel */
+.sobre-historia__grelha {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Espaço reservado para a fotografia do stand (bloco de cor) */
+.sobre-historia__imagem {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--raio);
+  background: var(--cor-placeholder);
+}
+
+/* Secções "Valores" e "Chamada" com fundo alternativo */
+.sobre-valores,
+.sobre-chamada {
+  background: var(--cor-fundo-alt);
+}
+
+/* Listas em grelha, sem marcadores */
+.grelha-valores,
+.grelha-equipa {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Cartão de cada vantagem: fundo branco, cantos arredondados e sombra */
+.valor {
+  background: #ffffff;
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--sombra);
+}
+
+/* Círculo laranja com o ícone da vantagem */
+.valor__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--cor-secundaria);
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+/* Título do cartão */
+.valor h3 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Texto do cartão */
+.valor p {
+  margin: 0;
+}
+
+/* Equipa: cartão de cada membro centrado */
+.membro {
+  text-align: center;
+}
+
+/* Espaço redondo reservado para a foto do membro da equipa */
+.membro__foto {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  background: var(--cor-placeholder);
+}
+
+/* Nome do membro da equipa */
+.membro h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Função do membro, em cor mais suave */
+.membro p {
+  margin: 0.25rem 0 0;
+  color: var(--cor-texto-suave);
+}
+
+/* Chamada para ação centrada */
+.sobre-chamada {
+  text-align: center;
+}
+
+/* Botões da chamada para ação: empilhados no telemóvel */
+.sobre-chamada__botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+
+/* ---------- 13. PÁGINA CONTACTOS (contactos.html) ---------- */
+
+/* Espaçamento vertical das secções */
+.contactos,
+.contactos-mapa {
+  padding: 2.5rem 0;
+}
+
+/* Grelha principal: uma coluna no telemóvel */
+.contactos__grelha {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Títulos das secções sem margem por cima */
+.contactos h2,
+.contactos-mapa h2 {
+  margin-top: 0;
+}
+
+/* Informações: o <address> não fica em itálico */
+.contactos__info address {
+  font-style: normal;
+}
+
+/* Cada bloco de contacto (morada, telefone, email) */
+.contactos__info address p {
+  margin: 0 0 1rem;
+}
+
+/* Tabela do horário a toda a largura */
+.horario {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Linhas da tabela separadas por uma borda */
+.horario th,
+.horario td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: left;
+}
+
+/* Horas alinhadas à direita */
+.horario td {
+  text-align: right;
+}
+
+/* Caixa do formulário: fundo claro e cantos arredondados */
+.contactos__caixa {
+  background: var(--cor-fundo-alt);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+}
+
+/* Mapa: contentor com proporção fixa (4:3 no telemóvel) e fundo cinzento enquanto carrega */
+.mapa {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: var(--cor-placeholder);
+}
+
+/* O iframe ocupa todo o espaço do contentor do mapa */
+.mapa iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* =========================================================
+   MEDIA QUERIES (pontos de quebra)
+   Os mesmos valores dos exemplos da aula (e do Tailwind):
+     sm = 640px · md = 768px · lg = 1024px · xl = 1280px
+   ========================================================= */
+
+/* ---- sm: telemóveis grandes / tablets pequenos ---- */
+@media (min-width: 640px) {
+  /* Mais espaço vertical nas secções */
+  .seccao {
+    padding: 3rem 0;
+  }
+
+  /* Grelha de veículos com 2 colunas */
+  .grelha-veiculos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Rodapé em 2 colunas */
+  .rodape__grelha {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Botões dos formulários com a largura do texto */
+  .formulario__acoes .botao {
+    width: auto;
+  }
+
+  /* Início: hero com mais espaço */
+  .hero {
+    padding: 4rem 0;
+  }
+
+  /* Início: Marca e Modelo lado a lado */
+  .pesquisa {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Início: o botão ocupa a linha inteira por baixo dos dois campos */
+  .pesquisa__botao {
+    grid-column: 1 / -1;
+  }
+
+  /* Veículos: campos de filtro em duas colunas */
+  .filtros__form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Veículos: os botões ocupam a linha inteira, por baixo dos campos */
+  .filtros__acoes {
+    grid-column: 1 / -1;
+  }
+
+  /* Detalhe: os 4 dados principais numa só linha */
+  .resumo__dados {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Detalhe: botões de ação lado a lado, com a mesma largura */
+  .resumo__acoes {
+    flex-direction: row;
+  }
+
+  /* Detalhe: os dois botões de ação ocupam a mesma largura */
+  .resumo__acoes .botao {
+    flex: 1;
+  }
+
+  /* Detalhe: equipamento em 2 colunas */
+  .equipamento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Sobre: cartões de valores em 2 colunas */
+  .grelha-valores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Sobre: equipa em 3 colunas */
+  .grelha-equipa {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Sobre: botões da chamada lado a lado */
+  .sobre-chamada__botoes {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* Contactos: mapa mais largo (16:9) */
+  .mapa {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ---- md: tablets ---- */
+@media (min-width: 768px) {
+  /* Logótipo um pouco maior */
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  /* Botão hambúrguer escondido: o menu já cabe ao lado do logo */
+  .botao-menu {
+    display: none;
+  }
+
+  /* Navegação sempre visível, à direita do logo */
+  .navegacao,
+  .navegacao--aberta {
+    display: block;
+    width: auto;
+    padding-bottom: 0;
+  }
+
+  /* Links do menu lado a lado na horizontal */
+  .menu {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  /* Links sem linha separadora e com cantos arredondados */
+  .menu__link {
+    padding: 0.5rem 0.9rem;
+    border-bottom: none;
+    border-radius: var(--raio);
+  }
+
+  /* Página atual com fundo cinzento claro */
+  .menu__link--ativo {
+    background-color: var(--cor-fundo-alt);
+  }
+}
+
+/* ---- lg: computadores ---- */
+@media (min-width: 1024px) {
+  /* Grelha de veículos com 3 colunas */
+  .grelha-veiculos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Rodapé em 3 colunas (a primeira mais larga) */
+  .rodape__grelha {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  /* Banners das páginas mais altos */
+  .faixa-titulo {
+    padding: 4rem 0;
+  }
+
+  /* Início: hero ainda mais alto */
+  .hero {
+    padding: 6rem 0;
+  }
+
+  /* Início: campos e botão todos na mesma linha, alinhados pela base */
+  .pesquisa {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+
+  /* Início: o botão volta a ter só a largura do texto */
+  .pesquisa__botao {
+    grid-column: auto;
+    width: auto;
+    padding-inline: 2rem;
+  }
+
+  /* Veículos: barra lateral de filtros com 260px e resultados no resto */
+  .veiculos__grelha {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+
+  /* Veículos: a barra de filtros acompanha o scroll, logo abaixo do cabeçalho */
+  .filtros {
+    position: sticky;
+    top: calc(var(--altura-cabecalho) + 1rem);
+    padding: 1.25rem;
+  }
+
+  /* Veículos: o botão "Filtros" já não é preciso */
+  .filtros__botao {
+    display: none;
+  }
+
+  /* Veículos: mostra o título "Filtros" */
+  .filtros__titulo {
+    display: block;
+  }
+
+  /* Veículos: formulário sempre visível, com os campos numa só coluna */
+  .filtros__form,
+  .filtros--com-js:not(.filtros--aberto) .filtros__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  /* Veículos: com a barra lateral há menos espaço, 2 colunas até ao xl */
+  .veiculos__grelha .grelha-veiculos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Detalhe: 2 colunas (galeria + resumo em cima, informação + formulário em baixo) */
+  .detalhe__grelha {
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas:
+      "galeria    resumo"
+      "informacao contacto";
+    gap: 2rem 2.5rem;
+    align-items: start;
+  }
+
+  /* Detalhe: a coluna do resumo é mais estreita, os dados voltam a 2 por linha */
+  .resumo__dados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Detalhe: botões de ação voltam a ficar empilhados */
+  .resumo__acoes {
+    flex-direction: column;
+  }
+
+  /* Detalhe: o formulário acompanha o scroll ao lado da ficha técnica */
+  .contacto {
+    position: sticky;
+    top: calc(var(--altura-cabecalho) + 1rem);
+  }
+
+  /* Sobre: mais espaçamento vertical nas secções */
+  .sobre-historia,
+  .sobre-valores,
+  .sobre-equipa,
+  .sobre-chamada {
+    padding: 4rem 0;
+  }
+
+  /* Sobre: texto e imagem lado a lado */
+  .sobre-historia__grelha {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  /* Sobre: cartões de valores em 4 colunas */
+  .grelha-valores {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Contactos: mais espaçamento vertical */
+  .contactos,
+  .contactos-mapa {
+    padding: 4rem 0;
+  }
+
+  /* Contactos: informações à esquerda e formulário à direita */
+  .contactos__grelha {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Contactos: mais espaço interior no formulário */
+  .contactos__caixa {
+    padding: 2rem;
+  }
+
+  /* Contactos: mapa panorâmico (21:9) */
+  .mapa {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* ---- xl: ecrãs grandes ---- */
+@media (min-width: 1280px) {
+  /* Veículos: já há espaço para 3 cartões por linha ao lado dos filtros */
+  .veiculos__grelha .grelha-veiculos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

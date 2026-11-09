@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <!-- Codificação dos caracteres (acentos) e adaptação ao ecrã do telemóvel -->
   <meta charset="UTF-8">
@@ -7,32 +7,31 @@
   <!-- Descrição da página para os motores de pesquisa -->
   <meta name="description" content="Veículos disponíveis no stand GaragemFácil: pesquisa por marca, ano, combustível e preço.">
   <!-- Título que aparece no separador do browser -->
-  <title>Veículos | GaragemFácil</title>
-  <!-- Estilos comuns a todo o site e, a seguir, os estilos só desta página -->
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/veiculos.css">
+  <title>GaragemFácil | Veículos</title>
+  <!-- Ligação à folha de estilos única do site (css/estilos.css) -->
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="container">
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
       <!-- Logótipo em texto, com link para a página inicial -->
       <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
-      <!-- Botão hambúrguer: só aparece no mobile e abre o menu -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <!-- Botão hambúrguer: só aparece no telemóvel e abre o menu -->
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Menu principal; "Veículos" está marcado como página atual -->
-      <nav id="menu" class="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="inicio.html">Início</a></li>
-          <li><a href="veiculos.html" class="ativo" aria-current="page">Veículos</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
+      <nav id="menu" class="navegacao" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a class="menu__link" href="inicio.html">Início</a></li>
+          <li><a href="veiculos.html" class="menu__link menu__link--ativo" aria-current="page">Veículos</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre nós</a></li>
+          <li><a class="menu__link" href="contactos.html">Contactos</a></li>
         </ul>
       </nav>
     </div>
@@ -40,24 +39,24 @@
 
   <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main class="pagina-veiculos">
-    <div class="container">
+    <div class="contentor">
     <!-- Título da página -->
-    <h1 class="titulo-seccao">Veículos disponíveis</h1>
+    <h1 class="seccao__titulo">Veículos disponíveis</h1>
 
-    <!-- Layout: filtros e resultados (lado a lado no desktop, empilhados no mobile) -->
-    <div class="veiculos-layout">
+    <!-- Layout: filtros e resultados (lado a lado no computador, empilhados no telemóvel) -->
+    <div class="veiculos__grelha">
       <!-- ===== FILTROS ===== -->
       <aside class="filtros" aria-labelledby="filtros-titulo">
-        <!-- Botão que abre/fecha os filtros no mobile (escondido no desktop) -->
-        <button class="filtros__toggle" type="button" aria-expanded="false" aria-controls="filtros-form">
+        <!-- Botão que abre/fecha os filtros no telemóvel (escondido no computador) -->
+        <button class="filtros__botao" type="button" aria-expanded="false" aria-controls="filtros-form">
           Filtros <span aria-hidden="true">&#9662;</span>
         </button>
-        <!-- Título do painel, visível só no desktop -->
+        <!-- Título do painel, visível só no computador -->
         <h2 class="filtros__titulo" id="filtros-titulo">Filtros</h2>
 
         <!-- Formulário com os filtros; o js/veiculos.js trata do envio -->
         <form class="filtros__form" id="filtros-form">
-          <div class="filtros__campo">
+          <div class="campo">
             <!-- Filtro por marca -->
             <label for="filtro-marca">Marca</label>
             <select id="filtro-marca" name="marca">
@@ -72,7 +71,7 @@
             </select>
           </div>
 
-          <div class="filtros__campo">
+          <div class="campo">
             <!-- Filtro por tipo de combustível -->
             <label for="filtro-combustivel">Combustível</label>
             <select id="filtro-combustivel" name="combustivel">
@@ -84,7 +83,7 @@
             </select>
           </div>
 
-          <div class="filtros__campo">
+          <div class="campo">
             <!-- Filtro pelo ano mínimo -->
             <label for="filtro-ano">Ano (a partir de)</label>
             <select id="filtro-ano" name="ano">
@@ -98,7 +97,7 @@
             </select>
           </div>
 
-          <div class="filtros__campo">
+          <div class="campo">
             <!-- Filtro pelo preço máximo -->
             <label for="filtro-preco">Preço (até)</label>
             <select id="filtro-preco" name="preco">
@@ -113,8 +112,8 @@
 
           <!-- Botões para aplicar e para limpar os filtros -->
           <div class="filtros__acoes">
-            <button class="btn btn-primario" type="submit">Aplicar</button>
-            <button class="btn" type="reset">Limpar</button>
+            <button class="botao botao--primario" type="submit">Aplicar</button>
+            <button class="botao" type="reset">Limpar</button>
           </div>
         </form>
       </aside>
@@ -122,7 +121,7 @@
       <!-- ===== RESULTADOS ===== -->
       <section class="resultados" aria-labelledby="resultados-titulo">
         <!-- Título só para leitores de ecrã -->
-        <h2 class="sr-only" id="resultados-titulo">Resultados</h2>
+        <h2 class="so-leitores" id="resultados-titulo">Resultados</h2>
         <!-- Número de veículos visíveis (atualizado pelo JavaScript) -->
         <p class="resultados__contagem" id="contagem" aria-live="polite">9 veículos encontrados</p>
 
@@ -130,109 +129,109 @@
         <ul class="grelha-veiculos" id="lista-veiculos">
         <!-- Cartão: Renault Clio 1.0 TCe -->
         <li>
-          <article class="card-veiculo" data-marca="Renault" data-combustivel="Gasolina" data-ano="2021" data-preco="15900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Renault" data-combustivel="Gasolina" data-ano="2021" data-preco="15900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Renault Clio 1.0 TCe</h3>
-              <p class="card-veiculo__info">2021 · Gasolina · 38 500 km · Manual</p>
-              <p class="card-veiculo__preco">15 900 €</p>
-              <a href="veiculo.html?id=1" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2021 · Gasolina · 38 500 km · Manual</p>
+              <p class="cartao-veiculo__preco">15 900 €</p>
+              <a href="veiculo.html?id=1" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Peugeot 208 1.5 BlueHDi -->
         <li>
-          <article class="card-veiculo" data-marca="Peugeot" data-combustivel="Gasóleo" data-ano="2020" data-preco="14750">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Peugeot" data-combustivel="Gasóleo" data-ano="2020" data-preco="14750">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Peugeot 208 1.5 BlueHDi</h3>
-              <p class="card-veiculo__info">2020 · Gasóleo · 62 000 km · Manual</p>
-              <p class="card-veiculo__preco">14 750 €</p>
-              <a href="veiculo.html?id=2" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2020 · Gasóleo · 62 000 km · Manual</p>
+              <p class="cartao-veiculo__preco">14 750 €</p>
+              <a href="veiculo.html?id=2" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: BMW Série 1 118d -->
         <li>
-          <article class="card-veiculo" data-marca="BMW" data-combustivel="Gasóleo" data-ano="2019" data-preco="21900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="BMW" data-combustivel="Gasóleo" data-ano="2019" data-preco="21900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>BMW Série 1 118d</h3>
-              <p class="card-veiculo__info">2019 · Gasóleo · 89 000 km · Automática</p>
-              <p class="card-veiculo__preco">21 900 €</p>
-              <a href="veiculo.html?id=3" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2019 · Gasóleo · 89 000 km · Automática</p>
+              <p class="cartao-veiculo__preco">21 900 €</p>
+              <a href="veiculo.html?id=3" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Toyota Yaris 1.5 Hybrid -->
         <li>
-          <article class="card-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2022" data-preco="19500">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2022" data-preco="19500">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Toyota Yaris 1.5 Hybrid</h3>
-              <p class="card-veiculo__info">2022 · Híbrido · 21 000 km · Automática</p>
-              <p class="card-veiculo__preco">19 500 €</p>
-              <a href="veiculo.html?id=4" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2022 · Híbrido · 21 000 km · Automática</p>
+              <p class="cartao-veiculo__preco">19 500 €</p>
+              <a href="veiculo.html?id=4" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Volkswagen Golf 1.6 TDI -->
         <li>
-          <article class="card-veiculo" data-marca="Volkswagen" data-combustivel="Gasóleo" data-ano="2018" data-preco="13900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Volkswagen" data-combustivel="Gasóleo" data-ano="2018" data-preco="13900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Volkswagen Golf 1.6 TDI</h3>
-              <p class="card-veiculo__info">2018 · Gasóleo · 120 000 km · Manual</p>
-              <p class="card-veiculo__preco">13 900 €</p>
-              <a href="veiculo.html?id=5" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2018 · Gasóleo · 120 000 km · Manual</p>
+              <p class="cartao-veiculo__preco">13 900 €</p>
+              <a href="veiculo.html?id=5" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Tesla Model 3 Standard -->
         <li>
-          <article class="card-veiculo" data-marca="Tesla" data-combustivel="Elétrico" data-ano="2021" data-preco="31900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Tesla" data-combustivel="Elétrico" data-ano="2021" data-preco="31900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Tesla Model 3 Standard</h3>
-              <p class="card-veiculo__info">2021 · Elétrico · 45 000 km · Automática</p>
-              <p class="card-veiculo__preco">31 900 €</p>
-              <a href="veiculo.html?id=6" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2021 · Elétrico · 45 000 km · Automática</p>
+              <p class="cartao-veiculo__preco">31 900 €</p>
+              <a href="veiculo.html?id=6" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Mercedes-Benz Classe A 180 -->
         <li>
-          <article class="card-veiculo" data-marca="Mercedes-Benz" data-combustivel="Gasolina" data-ano="2020" data-preco="24500">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Mercedes-Benz" data-combustivel="Gasolina" data-ano="2020" data-preco="24500">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Mercedes-Benz Classe A 180</h3>
-              <p class="card-veiculo__info">2020 · Gasolina · 54 000 km · Automática</p>
-              <p class="card-veiculo__preco">24 500 €</p>
-              <a href="veiculo.html?id=7" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2020 · Gasolina · 54 000 km · Automática</p>
+              <p class="cartao-veiculo__preco">24 500 €</p>
+              <a href="veiculo.html?id=7" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Renault Mégane 1.5 dCi -->
         <li>
-          <article class="card-veiculo" data-marca="Renault" data-combustivel="Gasóleo" data-ano="2017" data-preco="10900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Renault" data-combustivel="Gasóleo" data-ano="2017" data-preco="10900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Renault Mégane 1.5 dCi</h3>
-              <p class="card-veiculo__info">2017 · Gasóleo · 135 000 km · Manual</p>
-              <p class="card-veiculo__preco">10 900 €</p>
-              <a href="veiculo.html?id=8" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2017 · Gasóleo · 135 000 km · Manual</p>
+              <p class="cartao-veiculo__preco">10 900 €</p>
+              <a href="veiculo.html?id=8" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
         <!-- Cartão: Toyota C-HR 1.8 Hybrid -->
         <li>
-          <article class="card-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2019" data-preco="20900">
-            <div class="card-veiculo__foto" aria-hidden="true"></div>
-            <div class="card-veiculo__corpo">
+          <article class="cartao-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2019" data-preco="20900">
+            <div class="cartao-veiculo__foto" aria-hidden="true"></div>
+            <div class="cartao-veiculo__corpo">
               <h3>Toyota C-HR 1.8 Hybrid</h3>
-              <p class="card-veiculo__info">2019 · Híbrido · 76 000 km · Automática</p>
-              <p class="card-veiculo__preco">20 900 €</p>
-              <a href="veiculo.html?id=9" class="btn btn-primario">Ver detalhes</a>
+              <p class="cartao-veiculo__info">2019 · Híbrido · 76 000 km · Automática</p>
+              <p class="cartao-veiculo__preco">20 900 €</p>
+              <a href="veiculo.html?id=9" class="botao botao--primario">Ver detalhes</a>
             </div>
           </article>
         </li>
@@ -245,11 +244,11 @@
     </div>
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grelha">
-        <div class="footer-coluna">
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <div class="contentor">
+      <div class="rodape__grelha">
+        <div class="rodape__coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
           <div class="redes-sociais">
@@ -262,17 +261,19 @@
           </div>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Navegação</h2>
           <ul>
             <li><a href="inicio.html">Início</a></li>
             <li><a href="veiculos.html">Veículos</a></li>
             <li><a href="sobre.html">Sobre nós</a></li>
             <li><a href="contactos.html">Contactos</a></li>
+            <!-- Volta ao cabeçalho (id="topo") -->
+            <li><a href="#topo">Voltar ao topo ↑</a></li>
           </ul>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Contactos</h2>
           <ul>
             <li>Rua do Stand, 123, Coimbra</li>
@@ -283,7 +284,7 @@
         </div>
       </div>
 
-      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+      <p class="rodape__direitos">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 

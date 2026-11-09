@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Vai buscar o espaço da foto principal e todas as miniaturas
   var principal = document.getElementById('foto-principal');
-  var miniaturas = document.querySelectorAll('.miniatura');
+  var miniaturas = document.querySelectorAll('.galeria__miniatura');
 
   // Se a página não tiver galeria, não faz nada
   if (!principal) return;
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
       principal.setAttribute('aria-label', 'Espaço para a foto do Peugeot 308: ' + legenda.toLowerCase());
 
       // Tira a seleção de todas as miniaturas e marca só a que foi clicada
-      miniaturas.forEach(function (m) { m.classList.remove('ativa'); });
-      botao.classList.add('ativa');
+      miniaturas.forEach(function (m) { m.classList.remove('galeria__miniatura--ativa'); });
+      botao.classList.add('galeria__miniatura--ativa');
     });
   });
 });

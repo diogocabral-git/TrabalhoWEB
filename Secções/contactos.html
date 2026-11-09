@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <!-- Cabeçalho do documento: codificação, viewport para telemóveis, título, descrição e folhas de estilo -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contactos do GaragemFácil: morada, telefone, email, horário e formulário de contacto.">
-  <title>Contactos | GaragemFácil</title>
-  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
-  <link rel="stylesheet" href="../css/style.css">
-  <!-- Estilos próprios da página Contactos -->
-  <link rel="stylesheet" href="../css/contactos.css">
+  <title>GaragemFácil | Contactos</title>
+  <!-- Ligação à folha de estilos única do site (css/estilos.css) -->
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-  <!-- HEADER: logótipo em texto, botão hambúrguer (só no mobile) e menu principal -->
-  <header class="site-header">
-    <div class="container">
+  <!-- ===== CABEÇALHO =====
+       Logótipo em texto, botão hambúrguer (só no telemóvel) e menu principal -->
+  <header class="cabecalho" id="topo">
+    <div class="contentor cabecalho__interior">
       <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
-      <!-- Botão hambúrguer: abre e fecha o menu no mobile (controlado por js/main.js) -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <!-- Botão hambúrguer: abre e fecha o menu no telemóvel (controlado por js/main.js) -->
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Menu de navegação; a classe "ativo" marca a página atual -->
-      <nav id="menu" class="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="inicio.html">Início</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
-          <li><a href="contactos.html" class="ativo" aria-current="page">Contactos</a></li>
+      <nav id="menu" class="navegacao" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a class="menu__link" href="inicio.html">Início</a></li>
+          <li><a class="menu__link" href="veiculos.html">Veículos</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre nós</a></li>
+          <li><a href="contactos.html" class="menu__link menu__link--ativo" aria-current="page">Contactos</a></li>
         </ul>
       </nav>
     </div>
@@ -39,16 +38,16 @@
   <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
   <main>
     <!-- Banner do topo com o título da página e uma frase de apresentação -->
-    <section class="page-banner">
-      <div class="container">
+    <section class="faixa-titulo">
+      <div class="contentor">
         <h1>Contactos</h1>
         <p>Tens alguma dúvida ou queres marcar uma visita? Fala connosco.</p>
       </div>
     </section>
 
-    <!-- Secção principal: informações de contacto e formulário (lado a lado no desktop) -->
+    <!-- Secção principal: informações de contacto e formulário (lado a lado no computador) -->
     <section class="contactos">
-      <div class="container contactos__grid">
+      <div class="contentor contactos__grelha">
         <!-- Coluna das informações: morada, telefone, email e horário -->
         <div class="contactos__info">
           <h2>Onde estamos</h2>
@@ -70,43 +69,75 @@
         </div>
 
         <!-- Coluna do formulário de contacto -->
-        <div class="contactos__form">
+        <div class="contactos__caixa">
           <h2>Envia-nos uma mensagem</h2>
-          <!-- Formulário: os campos com "required" são obrigatórios (validação do browser) -->
-          <form action="#" method="post">
-            <!-- Campo: nome -->
-            <div class="campo">
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" autocomplete="name" required>
+          <!-- Formulário: validação feita só com HTML (required, minlength, pattern)
+               e CSS (:user-invalid), sem JavaScript, como no exemplo da aula -->
+          <form class="formulario" action="#" method="post">
+
+            <!-- ===== GRUPO 1: dados de quem escreve =====
+                 fieldset agrupa campos relacionados; legend é o título do grupo -->
+            <fieldset class="grupo">
+              <legend class="grupo__titulo">Os teus dados</legend>
+
+              <!-- Campo: nome. for="nome" liga o label ao input com id="nome" -->
+              <div class="campo">
+                <label for="nome">Nome <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input type="text" id="nome" name="nome" autocomplete="name"
+                       minlength="3" required
+                       aria-describedby="ajuda-nome">
+                <!-- Esta mensagem só aparece se o campo for inválido (ver CSS) -->
+                <small class="campo__ajuda" id="ajuda-nome">Escreve pelo menos 3 letras.</small>
+              </div>
+
+              <!-- Campo: email. type="email" faz o browser validar o formato -->
+              <div class="campo">
+                <label for="email">Email <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required
+                       aria-describedby="ajuda-email">
+                <small class="campo__ajuda" id="ajuda-email">Formato esperado: nome@dominio.pt</small>
+              </div>
+
+              <!-- Campo: telefone (opcional). type="tel" não valida nada sozinho:
+                   é o pattern que obriga a 9 dígitos começados por 2 ou 9 -->
+              <div class="campo">
+                <label for="telefone">Telefone <span class="campo__opcional">(opcional)</span></label>
+                <input type="tel" id="telefone" name="telefone" autocomplete="tel"
+                       pattern="[29][0-9]{8}"
+                       aria-describedby="ajuda-telefone">
+                <small class="campo__ajuda" id="ajuda-telefone">9 dígitos, sem espaços (ex: 912345678).</small>
+              </div>
+            </fieldset>
+
+            <!-- ===== GRUPO 2: a mensagem ===== -->
+            <fieldset class="grupo">
+              <legend class="grupo__titulo">A mensagem</legend>
+
+              <!-- Campo: assunto da mensagem (lista de opções) -->
+              <div class="campo">
+                <label for="assunto">Assunto</label>
+                <select id="assunto" name="assunto">
+                  <option value="informacao">Pedido de informação</option>
+                  <option value="visita">Marcar visita ao stand</option>
+                  <option value="test-drive">Marcar test-drive</option>
+                  <option value="retoma">Avaliação de retoma</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+
+              <!-- Campo: mensagem. maxlength limita o número de caracteres -->
+              <div class="campo">
+                <label for="mensagem">Mensagem <span class="obrigatorio" aria-hidden="true">*</span></label>
+                <textarea id="mensagem" name="mensagem" rows="5" maxlength="500" required
+                          aria-describedby="ajuda-mensagem"></textarea>
+                <small class="campo__ajuda" id="ajuda-mensagem">Escreve a tua mensagem (até 500 caracteres).</small>
+              </div>
+            </fieldset>
+
+            <!-- Botão para enviar o formulário (largura total no telemóvel) -->
+            <div class="formulario__acoes">
+              <button type="submit" class="botao botao--primario">Enviar mensagem</button>
             </div>
-            <!-- Campo: email (o tipo "email" valida o formato) -->
-            <div class="campo">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
-            </div>
-            <!-- Campo: telefone (opcional) -->
-            <div class="campo">
-              <label for="telefone">Telefone <span class="opcional">(opcional)</span></label>
-              <input type="tel" id="telefone" name="telefone" autocomplete="tel">
-            </div>
-            <!-- Campo: assunto da mensagem (lista de opções) -->
-            <div class="campo">
-              <label for="assunto">Assunto</label>
-              <select id="assunto" name="assunto">
-                <option value="informacao">Pedido de informação</option>
-                <option value="visita">Marcar visita ao stand</option>
-                <option value="test-drive">Marcar test-drive</option>
-                <option value="retoma">Avaliação de retoma</option>
-                <option value="outro">Outro</option>
-              </select>
-            </div>
-            <!-- Campo: mensagem -->
-            <div class="campo">
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-            </div>
-            <!-- Botão para enviar o formulário -->
-            <button type="submit" class="btn btn-primario">Enviar mensagem</button>
           </form>
         </div>
       </div>
@@ -114,7 +145,7 @@
 
     <!-- Secção do mapa: Google Maps embebido com a localização do stand -->
     <section class="contactos-mapa">
-      <div class="container">
+      <div class="contentor">
         <h2>Mapa</h2>
         <div class="mapa">
           <!-- Mapa do Google Maps; "loading=lazy" só o carrega quando aparece no ecrã -->
@@ -128,11 +159,12 @@
     </section>
   </main>
 
-  <!-- FOOTER: apresentação, links de navegação, contactos e direitos de autor -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grelha">
-        <div class="footer-coluna">
+  <!-- ===== RODAPÉ =====
+       Apresentação, links de navegação, contactos e direitos de autor -->
+  <footer class="rodape">
+    <div class="contentor">
+      <div class="rodape__grelha">
+        <div class="rodape__coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
           <div class="redes-sociais">
@@ -145,17 +177,19 @@
           </div>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Navegação</h2>
           <ul>
             <li><a href="inicio.html">Início</a></li>
             <li><a href="veiculos.html">Veículos</a></li>
             <li><a href="sobre.html">Sobre nós</a></li>
             <li><a href="contactos.html">Contactos</a></li>
+            <!-- Volta ao cabeçalho (id="topo") -->
+            <li><a href="#topo">Voltar ao topo ↑</a></li>
           </ul>
         </div>
 
-        <div class="footer-coluna">
+        <div class="rodape__coluna">
           <h2>Contactos</h2>
           <ul>
             <li>Rua do Stand, 123, Coimbra</li>
@@ -166,11 +200,11 @@
         </div>
       </div>
 
-      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+      <p class="rodape__direitos">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 
-  <!-- Script comum: menu hambúrguer e ano atual no footer -->
+  <!-- Script comum: menu hambúrguer e ano atual no rodapé -->
   <script src="../js/main.js"></script>
 </body>
 </html>
