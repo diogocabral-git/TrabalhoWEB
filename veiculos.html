@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <!-- Codificação dos caracteres (acentos) e adaptação ao ecrã do telemóvel -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Descrição da página para os motores de pesquisa -->
   <meta name="description" content="Veículos disponíveis no stand GaragemFácil: pesquisa por marca, ano, combustível e preço.">
+  <!-- Título que aparece no separador do browser -->
   <title>Veículos | GaragemFácil</title>
+  <!-- Estilos comuns a todo o site e, a seguir, os estilos só desta página -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/veiculos.css">
 </head>
@@ -12,14 +16,17 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="container">
+      <!-- Logótipo em texto, com link para a página inicial -->
       <a href="index.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
+      <!-- Botão hambúrguer: só aparece no mobile e abre o menu -->
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
+      <!-- Menu principal; "Veículos" está marcado como página atual -->
       <nav id="menu" class="site-nav" aria-label="Menu principal">
         <ul>
           <li><a href="index.html">Início</a></li>
@@ -31,19 +38,27 @@
     </div>
   </header>
 
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main class="pagina-veiculos">
     <div class="container">
+    <!-- Título da página -->
     <h1 class="titulo-seccao">Veículos disponíveis</h1>
 
+    <!-- Layout: filtros e resultados (lado a lado no desktop, empilhados no mobile) -->
     <div class="veiculos-layout">
+      <!-- ===== FILTROS ===== -->
       <aside class="filtros" aria-labelledby="filtros-titulo">
+        <!-- Botão que abre/fecha os filtros no mobile (escondido no desktop) -->
         <button class="filtros__toggle" type="button" aria-expanded="false" aria-controls="filtros-form">
           Filtros <span aria-hidden="true">&#9662;</span>
         </button>
+        <!-- Título do painel, visível só no desktop -->
         <h2 class="filtros__titulo" id="filtros-titulo">Filtros</h2>
 
+        <!-- Formulário com os filtros; o js/veiculos.js trata do envio -->
         <form class="filtros__form" id="filtros-form">
           <div class="filtros__campo">
+            <!-- Filtro por marca -->
             <label for="filtro-marca">Marca</label>
             <select id="filtro-marca" name="marca">
               <option value="">Todas</option>
@@ -58,6 +73,7 @@
           </div>
 
           <div class="filtros__campo">
+            <!-- Filtro por tipo de combustível -->
             <label for="filtro-combustivel">Combustível</label>
             <select id="filtro-combustivel" name="combustivel">
               <option value="">Todos</option>
@@ -69,6 +85,7 @@
           </div>
 
           <div class="filtros__campo">
+            <!-- Filtro pelo ano mínimo -->
             <label for="filtro-ano">Ano (a partir de)</label>
             <select id="filtro-ano" name="ano">
               <option value="">Todos</option>
@@ -82,6 +99,7 @@
           </div>
 
           <div class="filtros__campo">
+            <!-- Filtro pelo preço máximo -->
             <label for="filtro-preco">Preço (até)</label>
             <select id="filtro-preco" name="preco">
               <option value="">Todos</option>
@@ -93,6 +111,7 @@
             </select>
           </div>
 
+          <!-- Botões para aplicar e para limpar os filtros -->
           <div class="filtros__acoes">
             <button class="btn btn-primario" type="submit">Aplicar</button>
             <button class="btn" type="reset">Limpar</button>
@@ -100,11 +119,16 @@
         </form>
       </aside>
 
+      <!-- ===== RESULTADOS ===== -->
       <section class="resultados" aria-labelledby="resultados-titulo">
+        <!-- Título só para leitores de ecrã -->
         <h2 class="sr-only" id="resultados-titulo">Resultados</h2>
+        <!-- Número de veículos visíveis (atualizado pelo JavaScript) -->
         <p class="resultados__contagem" id="contagem" aria-live="polite">9 veículos encontrados</p>
 
+        <!-- Grelha de cartões. Cada cartão guarda marca, combustível, ano e preço em atributos data-* para os filtros -->
         <ul class="grelha-veiculos" id="lista-veiculos">
+        <!-- Cartão: Renault Clio 1.0 TCe -->
         <li>
           <article class="card-veiculo" data-marca="Renault" data-combustivel="Gasolina" data-ano="2021" data-preco="15900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -116,6 +140,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Peugeot 208 1.5 BlueHDi -->
         <li>
           <article class="card-veiculo" data-marca="Peugeot" data-combustivel="Gasóleo" data-ano="2020" data-preco="14750">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -127,6 +152,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: BMW Série 1 118d -->
         <li>
           <article class="card-veiculo" data-marca="BMW" data-combustivel="Gasóleo" data-ano="2019" data-preco="21900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -138,6 +164,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Toyota Yaris 1.5 Hybrid -->
         <li>
           <article class="card-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2022" data-preco="19500">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -149,6 +176,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Volkswagen Golf 1.6 TDI -->
         <li>
           <article class="card-veiculo" data-marca="Volkswagen" data-combustivel="Gasóleo" data-ano="2018" data-preco="13900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -160,6 +188,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Tesla Model 3 Standard -->
         <li>
           <article class="card-veiculo" data-marca="Tesla" data-combustivel="Elétrico" data-ano="2021" data-preco="31900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -171,6 +200,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Mercedes-Benz Classe A 180 -->
         <li>
           <article class="card-veiculo" data-marca="Mercedes-Benz" data-combustivel="Gasolina" data-ano="2020" data-preco="24500">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -182,6 +212,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Renault Mégane 1.5 dCi -->
         <li>
           <article class="card-veiculo" data-marca="Renault" data-combustivel="Gasóleo" data-ano="2017" data-preco="10900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -193,6 +224,7 @@
             </div>
           </article>
         </li>
+        <!-- Cartão: Toyota C-HR 1.8 Hybrid -->
         <li>
           <article class="card-veiculo" data-marca="Toyota" data-combustivel="Híbrido" data-ano="2019" data-preco="20900">
             <div class="card-veiculo__foto" aria-hidden="true"></div>
@@ -206,6 +238,7 @@
         </li>
         </ul>
 
+        <!-- Mensagem mostrada quando nenhum veículo corresponde aos filtros -->
         <p class="resultados__vazio" id="sem-resultados" hidden>Nenhum veículo corresponde aos filtros escolhidos.</p>
       </section>
     </div>
@@ -254,6 +287,7 @@
     </div>
   </footer>
 
+  <!-- Scripts: menu comum a todas as páginas e filtros desta página -->
   <script src="js/main.js"></script>
   <script src="js/veiculos.js"></script>
 </body>

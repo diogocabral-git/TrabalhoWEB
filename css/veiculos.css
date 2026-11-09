@@ -5,17 +5,20 @@
    lateral de filtros + 2 colunas; >=1200px 3 colunas.
    ========================================================== */
 
+/* Espaço em cima e em baixo do conteúdo principal da página */
 .pagina-veiculos {
   padding: 1.5rem 0 1rem;
 }
 
+/* Grelha que junta os filtros e os resultados (empilhados no mobile) */
 .veiculos-layout {
   display: grid;
   gap: 1.5rem;
 }
 
-/* ---------- Filtros ---------- */
+/* ==================== FILTROS ==================== */
 
+/* Caixa do painel de filtros: fundo cinzento claro e cantos arredondados */
 .filtros {
   background: var(--cor-fundo-alt);
   border: 1px solid var(--cor-borda);
@@ -23,6 +26,7 @@
   padding: 1rem;
 }
 
+/* Botão "Filtros" que abre e fecha o painel no mobile */
 .filtros__toggle {
   display: flex;
   justify-content: space-between;
@@ -38,20 +42,24 @@
   cursor: pointer;
 }
 
+/* Seta do botão "Filtros", com animação ao rodar */
 .filtros__toggle span {
   transition: transform 0.2s;
 }
 
+/* Quando o painel está aberto, a seta aponta para cima */
 .filtros__toggle[aria-expanded="true"] span {
   transform: rotate(180deg);
 }
 
+/* Título "Filtros": escondido no mobile (já existe o botão), visível no desktop */
 .filtros__titulo {
   display: none;
   margin: 0 0 1rem;
   font-size: 1.15rem;
 }
 
+/* Formulário dos filtros: campos uns por baixo dos outros */
 .filtros__form {
   display: grid;
   gap: 1rem;
@@ -64,33 +72,39 @@
   display: none;
 }
 
+/* Cada campo de filtro: etiqueta por cima e lista de opções por baixo */
 .filtros__campo {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
+/* Etiquetas dos campos um pouco mais pequenas */
 .filtros__campo label {
   margin-bottom: 0;
   font-size: 0.95rem;
 }
 
+/* Linha com os botões Aplicar e Limpar lado a lado */
 .filtros__acoes {
   display: flex;
   gap: 0.5rem;
 }
 
+/* Os dois botões ocupam a mesma largura */
 .filtros__acoes .btn {
   flex: 1;
 }
 
-/* ---------- Resultados ---------- */
+/* ==================== RESULTADOS ==================== */
 
+/* Texto "X veículos encontrados" por cima da grelha */
 .resultados__contagem {
   margin: 0 0 1rem;
   color: var(--cor-texto-suave);
 }
 
+/* Mensagem mostrada quando nenhum veículo corresponde aos filtros */
 .resultados__vazio {
   padding: 2rem 1rem;
   text-align: center;
@@ -98,17 +112,19 @@
   border-radius: var(--raio);
 }
 
-/* A grelha e o cartão (.card-veiculo) vêm do style.css */
+/* Lista de veículos: a grelha e o cartão (.card-veiculo) vêm do style.css; aqui só se tiram as marcas da lista */
 .grelha-veiculos {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Cada item da lista estica para os cartões da mesma linha terem a mesma altura */
 .grelha-veiculos > li {
   display: flex;
 }
 
+/* O cartão ocupa toda a largura do item da lista */
 .grelha-veiculos .card-veiculo {
   width: 100%;
 }
@@ -120,38 +136,47 @@
   border-bottom: 1px solid var(--cor-borda);
 }
 
-/* ---------- Tablet ---------- */
+/* ==================== TABLET (>= 600px) ====================
+   Os filtros passam a duas colunas para aproveitar a largura */
 @media (min-width: 600px) {
+  /* Campos de filtro em duas colunas */
   .filtros__form {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Os botões ocupam a linha inteira, por baixo dos campos */
   .filtros__acoes {
     grid-column: 1 / -1;
   }
 }
 
-/* ---------- Desktop: barra lateral ---------- */
+/* ==================== DESKTOP (>= 992px) ====================
+   Os filtros passam a barra lateral à esquerda da grelha */
 @media (min-width: 992px) {
+  /* Duas colunas: barra lateral com 260px e resultados no resto */
   .veiculos-layout {
     grid-template-columns: 260px 1fr;
     align-items: start;
   }
 
+  /* A barra de filtros acompanha o scroll, logo abaixo do header */
   .filtros {
     position: sticky;
     top: calc(var(--altura-header) + 1rem);
     padding: 1.25rem;
   }
 
+  /* No desktop o botão "Filtros" não é preciso */
   .filtros__toggle {
     display: none;
   }
 
+  /* Mostra o título "Filtros" */
   .filtros__titulo {
     display: block;
   }
 
+  /* Formulário sempre visível e com os campos numa só coluna */
   .filtros__form,
   .filtros.com-js:not(.aberto) .filtros__form {
     display: grid;
@@ -166,7 +191,9 @@
   }
 }
 
+/* ==================== ECRÃS GRANDES (>= 1200px) ==================== */
 @media (min-width: 1200px) {
+  /* Há espaço para três cartões por linha */
   .grelha-veiculos {
     grid-template-columns: repeat(3, 1fr);
   }
