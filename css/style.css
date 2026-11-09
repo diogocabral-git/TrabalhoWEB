@@ -214,14 +214,23 @@ label {
   min-height: var(--altura-header);
 }
 
+/* Logótipo em texto: "Garagem" a azul e "Fácil" a laranja */
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cor-primaria);
+  text-decoration: none;
 }
 
-.logo img {
-  height: 44px;
-  width: auto;
+.logo span {
+  color: var(--cor-secundaria);
+}
+
+.logo:hover {
+  color: var(--cor-primaria);
 }
 
 /* Botão hambúrguer (.menu-toggle e .nav-toggle são equivalentes) */
@@ -452,8 +461,8 @@ label {
 @media (min-width: 992px) {
   h1 { font-size: 2.5rem; }
 
-  .logo img {
-    height: 52px;
+  .logo {
+    font-size: 1.75rem;
   }
 
   /* Hambúrguer escondido, menu sempre visível na horizontal */
