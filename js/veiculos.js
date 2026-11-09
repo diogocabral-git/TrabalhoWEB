@@ -1,5 +1,5 @@
 /* ==========================================================
-   Página Veículos (veiculos.html)
+   Página Veículos (Secções/veiculos.html)
    - Abrir e fechar o painel de filtros no mobile
    - Filtrar os cartões de veículo por marca, combustível,
      ano e preço

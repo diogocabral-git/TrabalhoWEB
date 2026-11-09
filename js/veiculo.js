@@ -1,5 +1,5 @@
 // ==========================================================
-// GaragemFácil · Página de detalhe do veículo (veiculo.html)
+// GaragemFácil · Página de detalhe do veículo (Secções/veiculo.html)
 // Galeria: ao clicar numa miniatura, mostra essa vista no
 // espaço principal e marca a miniatura como selecionada.
 // ==========================================================
