@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- Documento HTML5 em português -->
+<html lang="pt">
+<!-- Cabeçalho do documento: codificação, título, descrição e folhas de estilo -->
+<head>
+  <!-- Codificação UTF-8 para mostrar acentos corretamente -->
+  <meta charset="UTF-8">
+  <!-- Ajusta a página à largura do dispositivo (essencial para a responsividade) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título que aparece no separador do browser -->
+  <title>Modelo | GaragemFácil</title>
+  <!-- Descrição da página para os motores de busca -->
+  <meta name="description" content="Modelo base das páginas do GaragemFácil: header, footer e cartão de veículo.">
+  <!-- Estilos comuns a todas as páginas -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS próprio de cada página a seguir, por exemplo: -->
+  <!-- <link rel="stylesheet" href="css/inicio.css"> -->
+</head>
+<body>
+
+  <!--
+    MODELO BASE
+    Copiar o <header> e o <footer> abaixo para cada página.
+    Mudar a classe "ativo" (e aria-current="page") para o link da página atual.
+  -->
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logótipo em texto: leva à página inicial -->
+      <a href="index.html" class="logo" aria-label="GaragemFácil - página inicial">
+        Garagem<span>Fácil</span>
+      </a>
+
+      <!-- Botão hambúrguer: só aparece no telemóvel e tablet, abre e fecha o menu (js/main.js) -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Menu principal de navegação: escondido no telemóvel até carregar no botão -->
+      <nav id="menu" class="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html" class="ativo" aria-current="page">Início</a></li>
+          <li><a href="veiculos.html">Veículos</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO ===== -->
+  <!-- Conteúdo principal da página (cada página substitui esta parte) -->
+  <main>
+    <!-- Secção de exemplo com a grelha de cartões -->
+    <section class="seccao">
+      <div class="container">
+        <!-- Título da secção -->
+        <h1 class="titulo-seccao">Exemplo de cartões de veículo</h1>
+
+        <!-- Grelha de veículos: 1 coluna no telemóvel, 2 no tablet e 3 no desktop -->
+        <div class="grelha-veiculos">
+          <!-- Cartão de veículo (reutilizado no Início e na listagem): nome, informação, preço e botão -->
+          <article class="card-veiculo">
+            <div class="card-veiculo__corpo">
+              <h3>Renault Clio 1.0 TCe</h3>
+              <p class="card-veiculo__info">2021 · Gasolina · 45 000 km</p>
+              <p class="card-veiculo__preco">14 900 €</p>
+              <a href="veiculo.html?id=1" class="btn btn-primario">Ver detalhes</a>
+            </div>
+          </article>
+
+          <!-- Cartão de veículo: Peugeot 308 -->
+          <article class="card-veiculo">
+            <div class="card-veiculo__corpo">
+              <h3>Peugeot 308 1.5 BlueHDi</h3>
+              <p class="card-veiculo__info">2020 · Gasóleo · 78 000 km</p>
+              <p class="card-veiculo__preco">17 500 €</p>
+              <a href="veiculo.html?id=2" class="btn btn-primario">Ver detalhes</a>
+            </div>
+          </article>
+
+          <!-- Cartão de veículo: Tesla Model 3 -->
+          <article class="card-veiculo">
+            <div class="card-veiculo__corpo">
+              <h3>Tesla Model 3</h3>
+              <p class="card-veiculo__info">2022 · Elétrico · 30 000 km</p>
+              <p class="card-veiculo__preco">34 900 €</p>
+              <a href="veiculo.html?id=3" class="btn btn-primario">Ver detalhes</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <!-- Grelha de colunas do rodapé -->
+      <div class="footer-grelha">
+        <!-- Coluna 1: apresentação do stand e redes sociais -->
+        <div class="footer-coluna">
+          <h2>GaragemFácil</h2>
+          <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
+          <!-- Ícones das redes sociais (SVG desenhado no próprio HTML, sem imagens) -->
+          <div class="redes-sociais">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.3 2.2 2.2 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.6 2.2 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.1 5.7-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.6-2.2-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.6.1 3.9 1.4 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.6-1.4 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.6-.1-3.9-1.4-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.6 1.4-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: atalhos para as páginas do site -->
+        <div class="footer-coluna">
+          <h2>Navegação</h2>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="veiculos.html">Veículos</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: contactos do stand -->
+        <div class="footer-coluna">
+          <h2>Contactos</h2>
+          <ul>
+            <li>Rua do Stand, 123, Coimbra</li>
+            <li><a href="tel:+351239000000">+351 239 000 000</a></li>
+            <li><a href="mailto:geral@garagemfacil.pt">geral@garagemfacil.pt</a></li>
+            <li>Seg–Sáb: 9h00–19h00</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Direitos de autor: o ano é preenchido pelo js/main.js -->
+      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript comum: menu hambúrguer e ano no rodapé -->
+  <script src="js/main.js"></script>
+</body>
+</html>
