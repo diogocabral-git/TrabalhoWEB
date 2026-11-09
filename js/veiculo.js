@@ -1,16 +1,17 @@
 // GaragemFácil · Página de detalhe do veículo
-// Troca a foto principal quando se clica numa miniatura da galeria.
+// Galeria: ao clicar numa miniatura, mostra essa vista no espaço principal.
 
 document.addEventListener('DOMContentLoaded', function () {
-  var fotoPrincipal = document.getElementById('foto-principal');
+  var principal = document.getElementById('foto-principal');
   var miniaturas = document.querySelectorAll('.miniatura');
 
-  if (!fotoPrincipal) return;
+  if (!principal) return;
 
   miniaturas.forEach(function (botao) {
     botao.addEventListener('click', function () {
-      fotoPrincipal.src = botao.dataset.foto;
-      fotoPrincipal.alt = botao.dataset.alt;
+      var legenda = botao.dataset.legenda;
+      principal.querySelector('span').textContent = legenda;
+      principal.setAttribute('aria-label', 'Espaço para a foto do Peugeot 308: ' + legenda.toLowerCase());
 
       miniaturas.forEach(function (m) { m.classList.remove('ativa'); });
       botao.classList.add('ativa');

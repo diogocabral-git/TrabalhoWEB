@@ -49,14 +49,14 @@
 
       <!-- Galeria de fotos -->
       <section class="galeria" aria-label="Fotografias do veículo">
-        <figure class="galeria-principal">
-          <img id="foto-principal" src="img/veiculos/peugeot-308-1.svg" alt="Peugeot 308 visto de frente" width="800" height="500">
-        </figure>
+        <div class="galeria-principal foto-placeholder" id="foto-principal" role="img" aria-label="Espaço para a foto do Peugeot 308: frente">
+          <span>Frente</span>
+        </div>
         <ul class="galeria-miniaturas">
-          <li><button type="button" class="miniatura ativa" data-foto="img/veiculos/peugeot-308-1.svg" data-alt="Peugeot 308 visto de frente"><img src="img/veiculos/peugeot-308-1.svg" alt="Frente"></button></li>
-          <li><button type="button" class="miniatura" data-foto="img/veiculos/peugeot-308-2.svg" data-alt="Peugeot 308 visto de lado"><img src="img/veiculos/peugeot-308-2.svg" alt="Lateral"></button></li>
-          <li><button type="button" class="miniatura" data-foto="img/veiculos/peugeot-308-3.svg" data-alt="Peugeot 308 visto de trás"><img src="img/veiculos/peugeot-308-3.svg" alt="Traseira"></button></li>
-          <li><button type="button" class="miniatura" data-foto="img/veiculos/peugeot-308-4.svg" data-alt="Interior do Peugeot 308"><img src="img/veiculos/peugeot-308-4.svg" alt="Interior"></button></li>
+          <li><button type="button" class="miniatura foto-placeholder ativa" data-legenda="Frente" aria-label="Ver foto da frente"><span>Frente</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Lateral" aria-label="Ver foto da lateral"><span>Lateral</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Traseira" aria-label="Ver foto da traseira"><span>Traseira</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Interior" aria-label="Ver foto do interior"><span>Interior</span></button></li>
         </ul>
       </section>
 
