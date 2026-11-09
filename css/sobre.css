@@ -5,7 +5,7 @@
    ========================================================== */
 
 .page-banner {
-  background: var(--cor-primaria, #1f3a5f);
+  background: var(--cor-primaria, #0a4d56);
   color: #fff;
   padding: 2.5rem 0;
   text-align: center;
@@ -13,6 +13,7 @@
 
 .page-banner h1 {
   margin: 0 0 0.5rem;
+  color: #fff;
   font-size: 1.75rem;
 }
 
@@ -54,13 +55,13 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--raio, 8px);
   background: #e5e7eb;
 }
 
 /* Valores */
 .sobre-valores {
-  background: var(--cor-fundo-alt, #f4f5f7);
+  background: var(--cor-fundo-alt, #f2f4f5);
 }
 
 .valores-grid,
@@ -74,10 +75,10 @@
 
 .valor {
   background: #fff;
-  border-radius: 8px;
+  border-radius: var(--raio, 8px);
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--sombra, 0 2px 8px rgba(0, 0, 0, 0.08));
 }
 
 .valor__icone {
@@ -87,7 +88,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: var(--cor-secundaria, #f28c28);
+  background: var(--cor-secundaria, #ff8210);
   color: #fff;
   font-size: 1.25rem;
 }
@@ -123,13 +124,13 @@
 
 .membro p {
   margin: 0.25rem 0 0;
-  color: var(--cor-texto-suave, #6b7280);
+  color: var(--cor-texto-suave, #5f6b6d);
 }
 
 /* Chamada para ação */
 .sobre-cta {
   text-align: center;
-  background: var(--cor-fundo-alt, #f4f5f7);
+  background: var(--cor-fundo-alt, #f2f4f5);
 }
 
 .sobre-cta__botoes {
@@ -142,8 +143,8 @@
 
 .btn-secundario {
   background: transparent;
-  color: var(--cor-primaria, #1f3a5f);
-  border: 2px solid var(--cor-primaria, #1f3a5f);
+  color: var(--cor-primaria, #0a4d56);
+  border: 2px solid var(--cor-primaria, #0a4d56);
 }
 
 /* Tablet */

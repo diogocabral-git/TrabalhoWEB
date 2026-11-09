@@ -5,7 +5,7 @@
    ========================================================== */
 
 .page-banner {
-  background: var(--cor-primaria, #1f3a5f);
+  background: var(--cor-primaria, #0a4d56);
   color: #fff;
   padding: 2.5rem 0;
   text-align: center;
@@ -13,6 +13,7 @@
 
 .page-banner h1 {
   margin: 0 0 0.5rem;
+  color: #fff;
   font-size: 1.75rem;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .contactos__info a {
-  color: var(--cor-primaria, #1f3a5f);
+  color: var(--cor-primaria, #0a4d56);
 }
 
 .horario {
@@ -67,8 +68,8 @@
 
 /* Formulário */
 .contactos__form {
-  background: var(--cor-fundo-alt, #f4f5f7);
-  border-radius: 8px;
+  background: var(--cor-fundo-alt, #f2f4f5);
+  border-radius: var(--raio, 8px);
   padding: 1.5rem;
 }
 
@@ -85,7 +86,7 @@
 
 .campo .opcional {
   font-weight: 400;
-  color: var(--cor-texto-suave, #6b7280);
+  color: var(--cor-texto-suave, #5f6b6d);
 }
 
 .campo input,
@@ -107,7 +108,7 @@
 .campo input:focus,
 .campo select:focus,
 .campo textarea:focus {
-  outline: 2px solid var(--cor-secundaria, #f28c28);
+  outline: 2px solid var(--cor-secundaria, #ff8210);
   outline-offset: 1px;
   border-color: transparent;
 }
@@ -121,7 +122,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 8px;
+  border-radius: var(--raio, 8px);
   overflow: hidden;
   background: #e5e7eb;
 }
