@@ -27,7 +27,7 @@
 }
 
 .breadcrumb a {
-  color: var(--cor-primaria, #c0392b);
+  color: var(--cor-primaria, #0a4d56);
 }
 
 /* ---------- Grelha principal ---------- */
@@ -94,7 +94,7 @@
 .miniatura:hover,
 .miniatura:focus-visible,
 .miniatura.ativa {
-  border-color: var(--cor-primaria, #c0392b);
+  border-color: var(--cor-primaria, #0a4d56);
 }
 
 /* ---------- Resumo ---------- */
@@ -115,7 +115,7 @@
   margin: 0 0 1rem;
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--cor-primaria, #c0392b);
+  color: var(--cor-primaria, #0a4d56);
 }
 
 .destaques {
@@ -154,8 +154,8 @@
 
 /* Botão secundário (contorno), caso style.css não o defina */
 .btn-secundario {
-  border: 2px solid var(--cor-primaria, #c0392b);
-  color: var(--cor-primaria, #c0392b);
+  border: 2px solid var(--cor-primaria, #0a4d56);
+  color: var(--cor-primaria, #0a4d56);
   background: transparent;
 }
 
@@ -236,7 +236,7 @@
 
 .form-contacto input:focus,
 .form-contacto textarea:focus {
-  outline: 2px solid var(--cor-primaria, #c0392b);
+  outline: 2px solid var(--cor-primaria, #0a4d56);
   outline-offset: 1px;
 }
 
@@ -249,20 +249,7 @@
 }
 
 .voltar a {
-  color: var(--cor-primaria, #c0392b);
-}
-
-/* Texto só para leitores de ecrã */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  color: var(--cor-primaria, #0a4d56);
 }
 
 /* ---------- Tablet (600px ou mais) ---------- */
