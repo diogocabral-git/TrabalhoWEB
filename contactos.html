@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactos do GaragemFácil: morada, telefone, email, horário e formulário de contacto.">
+  <title>Contactos | GaragemFácil</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contactos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">GaragemFácil</a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">&#9776;</button>
+      <nav class="site-nav" id="menu-principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="veiculos.html">Veículos</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="contactos.html" class="ativo" aria-current="page">Contactos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>Contactos</h1>
+        <p>Tens alguma dúvida ou queres marcar uma visita? Fala connosco.</p>
+      </div>
+    </section>
+
+    <section class="contactos">
+      <div class="container contactos__grid">
+        <div class="contactos__info">
+          <h2>Onde estamos</h2>
+          <address>
+            <p><strong>Morada:</strong><br>Rua das Oficinas, 123<br>4000-000 Porto</p>
+            <p><strong>Telefone:</strong><br><a href="tel:+351220000000">+351 220 000 000</a></p>
+            <p><strong>Email:</strong><br><a href="mailto:geral@garagemfacil.pt">geral@garagemfacil.pt</a></p>
+          </address>
+
+          <h3>Horário</h3>
+          <table class="horario">
+            <tbody>
+              <tr><th scope="row">Segunda a sexta</th><td>9h00 – 19h00</td></tr>
+              <tr><th scope="row">Sábado</th><td>9h30 – 13h00</td></tr>
+              <tr><th scope="row">Domingo</th><td>Encerrado</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contactos__form">
+          <h2>Envia-nos uma mensagem</h2>
+          <form action="#" method="post">
+            <div class="campo">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" autocomplete="name" required>
+            </div>
+            <div class="campo">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="campo">
+              <label for="telefone">Telefone <span class="opcional">(opcional)</span></label>
+              <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+            </div>
+            <div class="campo">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto">
+                <option value="informacao">Pedido de informação</option>
+                <option value="visita">Marcar visita ao stand</option>
+                <option value="test-drive">Marcar test-drive</option>
+                <option value="retoma">Avaliação de retoma</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="contactos-mapa">
+      <div class="container">
+        <h2>Mapa</h2>
+        <div class="mapa">
+          <iframe
+            title="Localização do GaragemFácil no mapa"
+            src="https://www.google.com/maps?q=Porto,Portugal&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>GaragemFácil</strong></p>
+      <p>Rua das Oficinas, 123, 4000-000 Porto · +351 220 000 000 · geral@garagemfacil.pt</p>
+      <p>&copy; 2026 GaragemFácil. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

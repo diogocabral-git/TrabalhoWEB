@@ -1,0 +1,191 @@
+/* ==========================================================
+   Sobre nós (sobre.html)
+   Estilos próprios da página. Header, footer, .container e
+   .btn vêm de css/style.css. Mobile first: 600px e 992px.
+   ========================================================== */
+
+.page-banner {
+  background: var(--cor-primaria, #1f3a5f);
+  color: #fff;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.page-banner h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.page-banner p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.sobre-historia,
+.sobre-valores,
+.sobre-equipa,
+.sobre-cta {
+  padding: 2.5rem 0;
+}
+
+.sobre-valores h2,
+.sobre-equipa h2,
+.sobre-cta h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* História */
+.sobre-historia__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.sobre-historia__texto h2 {
+  margin-top: 0;
+}
+
+.sobre-historia__imagem {
+  margin: 0;
+}
+
+.sobre-historia__imagem img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+/* Valores */
+.sobre-valores {
+  background: var(--cor-fundo-alt, #f4f5f7);
+}
+
+.valores-grid,
+.equipa-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.valor {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.valor__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--cor-secundaria, #f28c28);
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.valor h3 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.valor p {
+  margin: 0;
+}
+
+/* Equipa */
+.membro {
+  text-align: center;
+}
+
+.membro img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e5e7eb;
+}
+
+.membro h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.membro p {
+  margin: 0.25rem 0 0;
+  color: var(--cor-texto-suave, #6b7280);
+}
+
+/* Chamada para ação */
+.sobre-cta {
+  text-align: center;
+  background: var(--cor-fundo-alt, #f4f5f7);
+}
+
+.sobre-cta__botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--cor-primaria, #1f3a5f);
+  border: 2px solid var(--cor-primaria, #1f3a5f);
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .page-banner h1 {
+    font-size: 2.25rem;
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .equipa-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sobre-cta__botoes {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .page-banner {
+    padding: 4rem 0;
+  }
+
+  .sobre-historia,
+  .sobre-valores,
+  .sobre-equipa,
+  .sobre-cta {
+    padding: 4rem 0;
+  }
+
+  .sobre-historia__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
