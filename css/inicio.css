@@ -1,20 +1,20 @@
 /* ==========================================================================
    Página Início (index.html)
-   Estilos próprios desta página. Header, footer, cores, .btn e .card-veiculo
-   vêm de css/style.css. Abordagem mobile-first, breakpoints 600px e 992px.
+   Estilos próprios desta página. Header, footer, cores, .btn, .grelha-veiculos e
+   .card-veiculo vêm de css/style.css. Abordagem mobile-first, breakpoints 600px e 992px.
    ========================================================================== */
 
 /* ---------- Hero ---------- */
 .hero {
   background:
-    linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)),
-    var(--cor-primaria, #1e3a8a);
+    linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-primaria-escura) 100%);
   color: #fff;
   padding: 3rem 0;
   text-align: center;
 }
 
 .hero h1 {
+  color: #fff;
   margin: 0 0 0.5rem;
   font-size: 1.75rem;
   line-height: 1.2;
@@ -32,9 +32,9 @@
   max-width: 720px;
   margin: 0 auto;
   padding: 1rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: var(--cor-fundo);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-forte);
   text-align: left;
 }
 
@@ -47,15 +47,15 @@
 .pesquisa label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--cor-texto);
 }
 
 .pesquisa select {
   width: 100%;
   padding: 0.65rem 0.75rem;
   font: inherit;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
   background: #fff;
 }
 
@@ -65,9 +65,6 @@
 }
 
 /* ---------- Veículos em destaque ---------- */
-.destaques {
-  padding: 2.5rem 0;
-}
 
 .destaques__topo {
   display: flex;
@@ -79,7 +76,6 @@
 
 .destaques__topo h2 {
   margin: 0;
-  font-size: 1.4rem;
 }
 
 .destaques__ver-todos {
@@ -87,24 +83,6 @@
   font-weight: 600;
 }
 
-.grelha-veiculos {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
-}
-
-.grelha-veiculos .card-veiculo {
-  height: 100%;
-}
-
-.grelha-veiculos img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 
 /* ---------- Tablet (>= 600px) ---------- */
 @media (min-width: 600px) {
@@ -122,10 +100,6 @@
 
   .pesquisa__botao {
     grid-column: 1 / -1;
-  }
-
-  .grelha-veiculos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -148,9 +122,5 @@
     grid-column: auto;
     width: auto;
     padding-inline: 2rem;
-  }
-
-  .grelha-veiculos {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
