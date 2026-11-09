@@ -1,0 +1,166 @@
+/* ==========================================================
+   Página Veículos (veiculos.html)
+   Estilos base, header e footer estão em css/style.css.
+   Mobile first: 1 coluna; >=600px 2 colunas; >=992px barra
+   lateral de filtros + 2 colunas; >=1200px 3 colunas.
+   ========================================================== */
+
+.pagina-veiculos {
+  padding: 1.5rem 0 1rem;
+}
+
+.veiculos-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ---------- Filtros ---------- */
+
+.filtros {
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1rem;
+}
+
+.filtros__toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  font-weight: 600;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
+.filtros__toggle span {
+  transition: transform 0.2s;
+}
+
+.filtros__toggle[aria-expanded="true"] span {
+  transform: rotate(180deg);
+}
+
+.filtros__titulo {
+  display: none;
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+}
+
+.filtros__form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Com JavaScript, no mobile o formulário fica fechado até carregar em "Filtros".
+   Sem JavaScript os filtros ficam sempre visíveis. */
+.filtros.com-js:not(.aberto) .filtros__form {
+  display: none;
+}
+
+.filtros__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.filtros__campo label {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.filtros__acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filtros__acoes .btn {
+  flex: 1;
+}
+
+/* ---------- Resultados ---------- */
+
+.resultados__contagem {
+  margin: 0 0 1rem;
+  color: var(--cor-texto-suave);
+}
+
+.resultados__vazio {
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+/* A grelha e o cartão (.card-veiculo) vêm do style.css */
+.grelha-veiculos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grelha-veiculos > li {
+  display: flex;
+}
+
+.grelha-veiculos .card-veiculo {
+  width: 100%;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 600px) {
+  .filtros__form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filtros__acoes {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Desktop: barra lateral ---------- */
+@media (min-width: 992px) {
+  .veiculos-layout {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+
+  .filtros {
+    position: sticky;
+    top: calc(var(--altura-header) + 1rem);
+    padding: 1.25rem;
+  }
+
+  .filtros__toggle {
+    display: none;
+  }
+
+  .filtros__titulo {
+    display: block;
+  }
+
+  .filtros__form,
+  .filtros.com-js:not(.aberto) .filtros__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  /* Com a barra lateral há menos espaço: 2 colunas até 1200px */
+  .grelha-veiculos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grelha-veiculos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
