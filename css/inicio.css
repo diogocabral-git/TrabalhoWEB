@@ -1,10 +1,15 @@
 /* ==========================================================================
    Página Início (index.html)
    Estilos próprios desta página. Header, footer, cores, .btn, .grelha-veiculos e
-   .card-veiculo vêm de css/style.css. Abordagem mobile-first, breakpoints 600px e 992px.
+   .card-veiculo vêm de css/style.css. Abordagem mobile-first: primeiro os estilos
+   para telemóvel e depois as media queries para tablet (600px) e desktop (992px).
    ========================================================================== */
 
-/* ---------- Hero ---------- */
+
+/* ---------- Hero ----------
+   Bloco de destaque no topo da página, com o título e a pesquisa rápida. */
+
+/* Fundo em degradê com as cores do logótipo, texto branco e centrado */
 .hero {
   background:
     linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-primaria-escura) 100%);
@@ -13,6 +18,7 @@
   text-align: center;
 }
 
+/* Título principal: branco (o style.css põe os títulos na cor primária) */
 .hero h1 {
   color: #fff;
   margin: 0 0 0.5rem;
@@ -20,12 +26,17 @@
   line-height: 1.2;
 }
 
+/* Frase por baixo do título, ligeiramente mais suave */
 .hero__subtitulo {
   margin: 0 0 1.5rem;
   opacity: 0.9;
 }
 
-/* ---------- Pesquisa rápida ---------- */
+
+/* ---------- Pesquisa rápida ----------
+   Caixa branca com os campos Marca e Modelo e o botão Pesquisar. */
+
+/* Caixa da pesquisa: grelha com os campos empilhados no mobile */
 .pesquisa {
   display: grid;
   gap: 0.75rem;
@@ -38,18 +49,21 @@
   text-align: left;
 }
 
+/* Cada campo: etiqueta por cima e lista de opções por baixo */
 .pesquisa__campo {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
+/* Etiquetas dos campos (Marca, Modelo) */
 .pesquisa label {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--cor-texto);
 }
 
+/* Listas de opções a ocupar toda a largura do campo */
 .pesquisa select {
   width: 100%;
   padding: 0.65rem 0.75rem;
@@ -59,12 +73,15 @@
   background: #fff;
 }
 
+/* Botão Pesquisar: largura total no mobile e altura mínima confortável para o dedo */
 .pesquisa__botao {
   width: 100%;
   min-height: 44px;
 }
 
+
 /* ---------- Veículos em destaque ---------- */
+
 /* Espaço reservado para a fotografia do veículo (sem imagem por agora) */
 .card-veiculo__foto {
   aspect-ratio: 4 / 3;
@@ -72,7 +89,7 @@
   border-bottom: 1px solid var(--cor-borda);
 }
 
-
+/* Linha com o título da secção à esquerda e o link "Ver todos" à direita */
 .destaques__topo {
   display: flex;
   align-items: baseline;
@@ -81,18 +98,21 @@
   margin-bottom: 1.25rem;
 }
 
+/* Tira a margem do título para ficar alinhado com o link */
 .destaques__topo h2 {
   margin: 0;
 }
 
+/* Link "Ver todos": sempre numa só linha e a negrito */
 .destaques__ver-todos {
   white-space: nowrap;
   font-weight: 600;
 }
 
 
-/* ---------- Tablet (>= 600px) ---------- */
+/* ---------- Tablet (a partir de 600px) ---------- */
 @media (min-width: 600px) {
+  /* Hero com mais espaço e título maior */
   .hero {
     padding: 4rem 0;
   }
@@ -101,17 +121,21 @@
     font-size: 2.25rem;
   }
 
+  /* Marca e Modelo lado a lado */
   .pesquisa {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Botão ocupa a linha inteira por baixo dos dois campos */
   .pesquisa__botao {
     grid-column: 1 / -1;
   }
 }
 
-/* ---------- Desktop (>= 992px) ---------- */
+
+/* ---------- Desktop (a partir de 992px) ---------- */
 @media (min-width: 992px) {
+  /* Hero ainda mais alto e título grande */
   .hero {
     padding: 6rem 0;
   }
@@ -120,11 +144,13 @@
     font-size: 3rem;
   }
 
+  /* Campos e botão todos na mesma linha, alinhados pela base */
   .pesquisa {
     grid-template-columns: 1fr 1fr auto;
     align-items: end;
   }
 
+  /* Botão volta a ter só a largura do texto */
   .pesquisa__botao {
     grid-column: auto;
     width: auto;

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <!-- Codificação de caracteres, para os acentos aparecerem bem -->
   <meta charset="UTF-8">
+  <!-- Ajusta a largura da página ao ecrã do dispositivo (essencial para o design responsivo) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Descrição da página usada pelos motores de pesquisa -->
   <meta name="description" content="GaragemFácil: stand de automóveis usados. Pesquisa por marca e modelo e vê os veículos em destaque.">
+  <!-- Título que aparece no separador do browser -->
   <title>GaragemFácil | Início</title>
+  <!-- Estilos comuns a todas as páginas (cores, header, footer, botões, cartões) -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Estilos só desta página (hero e pesquisa rápida) -->
   <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
+
+  <!-- ===== HEADER =====
+       Barra do topo, igual em todas as páginas: logótipo, botão do menu (mobile) e menu de navegação -->
   <header class="site-header">
     <div class="container">
+      <!-- Logótipo em texto; leva de volta à página inicial -->
       <a href="index.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
+      <!-- Botão hambúrguer: só aparece no mobile e abre/fecha o menu (js/main.js).
+           As 3 <span> são os 3 traços do ícone -->
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
+      <!-- Menu principal. A classe "ativo" e aria-current marcam a página atual (Início) -->
       <nav id="menu" class="site-nav" aria-label="Menu principal">
         <ul>
           <li><a href="index.html" class="ativo" aria-current="page">Início</a></li>
@@ -30,13 +43,20 @@
     </div>
   </header>
 
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main>
+
+    <!-- HERO: bloco de destaque no topo com o título e a pesquisa rápida -->
     <section class="hero" aria-labelledby="hero-titulo">
       <div class="container hero__conteudo">
+        <!-- Título principal e frase de apresentação do stand -->
         <h1 id="hero-titulo">Encontra o teu próximo carro</h1>
         <p class="hero__subtitulo">Usados verificados, com garantia e preços claros.</p>
 
+        <!-- Pesquisa rápida: envia a marca e o modelo escolhidos para a página Veículos
+             (ex.: veiculos.html?marca=bmw&modelo=serie-1) -->
         <form class="pesquisa" action="veiculos.html" method="get" role="search">
+          <!-- Campo de escolha da marca -->
           <div class="pesquisa__campo">
             <label for="marca">Marca</label>
             <select id="marca" name="marca">
@@ -49,6 +69,7 @@
               <option value="volkswagen">Volkswagen</option>
             </select>
           </div>
+          <!-- Campo de escolha do modelo -->
           <div class="pesquisa__campo">
             <label for="modelo">Modelo</label>
             <select id="modelo" name="modelo">
@@ -61,19 +82,27 @@
               <option value="yaris">Yaris</option>
             </select>
           </div>
+          <!-- Botão que submete a pesquisa -->
           <button class="btn btn-primario pesquisa__botao" type="submit">Pesquisar</button>
         </form>
       </div>
     </section>
 
+    <!-- VEÍCULOS EM DESTAQUE: seleção de carros mostrada na página inicial -->
     <section class="seccao destaques" aria-labelledby="destaques-titulo">
       <div class="container">
+        <!-- Título da secção e link para ver a listagem completa -->
         <div class="destaques__topo">
           <h2 id="destaques-titulo" class="titulo-seccao">Veículos em destaque</h2>
           <a class="destaques__ver-todos" href="veiculos.html">Ver todos</a>
         </div>
+        <!-- Grelha de cartões: 1 coluna no mobile, 2 no tablet e 3 no desktop (css/style.css).
+             Cada cartão tem um espaço para a foto, o nome, os dados principais, o preço
+             e o botão que abre a página de detalhe do veículo -->
         <div class="grelha-veiculos">
+            <!-- Cartão 1: Volkswagen Golf 1.6 TDI -->
             <article class="card-veiculo">
+              <!-- Espaço reservado para a fotografia -->
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
                 <h3>Volkswagen Golf 1.6 TDI</h3>
@@ -82,6 +111,7 @@
                 <a class="btn btn-primario" href="veiculo.html?id=1">Ver detalhes</a>
               </div>
             </article>
+            <!-- Cartão 2: Renault Clio 1.0 TCe -->
             <article class="card-veiculo">
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
@@ -91,6 +121,7 @@
                 <a class="btn btn-primario" href="veiculo.html?id=2">Ver detalhes</a>
               </div>
             </article>
+            <!-- Cartão 3: BMW Série 1 116d -->
             <article class="card-veiculo">
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
@@ -100,6 +131,7 @@
                 <a class="btn btn-primario" href="veiculo.html?id=3">Ver detalhes</a>
               </div>
             </article>
+            <!-- Cartão 4: Peugeot 208 e-208 -->
             <article class="card-veiculo">
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
@@ -109,6 +141,7 @@
                 <a class="btn btn-primario" href="veiculo.html?id=4">Ver detalhes</a>
               </div>
             </article>
+            <!-- Cartão 5: Toyota Yaris Hybrid -->
             <article class="card-veiculo">
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
@@ -118,6 +151,7 @@
                 <a class="btn btn-primario" href="veiculo.html?id=5">Ver detalhes</a>
               </div>
             </article>
+            <!-- Cartão 6: Seat Leon 1.5 TSI -->
             <article class="card-veiculo">
               <div class="card-veiculo__foto" aria-hidden="true"></div>
               <div class="card-veiculo__corpo">
@@ -133,12 +167,17 @@
     </section>
   </main>
 
+  <!-- ===== FOOTER =====
+       Rodapé, igual em todas as páginas: apresentação, navegação e contactos -->
   <footer class="site-footer">
     <div class="container">
+      <!-- Grelha do rodapé: colunas empilhadas no mobile e lado a lado no desktop -->
       <div class="footer-grelha">
+        <!-- Coluna 1: nome do stand, frase de apresentação e redes sociais -->
         <div class="footer-coluna">
           <h2>GaragemFácil</h2>
           <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
+          <!-- Ícones das redes sociais (desenhados em SVG, sem imagens) -->
           <div class="redes-sociais">
             <a href="#" aria-label="Facebook">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg>
@@ -149,6 +188,7 @@
           </div>
         </div>
 
+        <!-- Coluna 2: links de navegação -->
         <div class="footer-coluna">
           <h2>Navegação</h2>
           <ul>
@@ -159,6 +199,7 @@
           </ul>
         </div>
 
+        <!-- Coluna 3: morada, telefone, email e horário -->
         <div class="footer-coluna">
           <h2>Contactos</h2>
           <ul>
@@ -170,10 +211,12 @@
         </div>
       </div>
 
+      <!-- Direitos de autor; o ano é preenchido pelo js/main.js -->
       <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
     </div>
   </footer>
 
+  <!-- JavaScript comum: abre/fecha o menu no mobile e atualiza o ano no rodapé -->
   <script src="js/main.js"></script>
 </body>
 </html>
