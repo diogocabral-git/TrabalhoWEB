@@ -1,0 +1,315 @@
+/* ==========================================================
+   GaragemFácil · Página de detalhe do veículo (veiculo.html)
+   Estilos base (header, footer, botões, variáveis) em style.css.
+   Mobile first: 1 coluna; 2 colunas a partir de 992px.
+   ========================================================== */
+
+.detalhe {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* ---------- Caminho de navegação ---------- */
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 0.25rem;
+  opacity: 0.6;
+}
+
+.breadcrumb a {
+  color: var(--cor-primaria, #c0392b);
+}
+
+/* ---------- Grelha principal ---------- */
+.detalhe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "galeria"
+    "resumo"
+    "informacao"
+    "contacto";
+  gap: 1.5rem;
+}
+
+.galeria    { grid-area: galeria; }
+.resumo     { grid-area: resumo; }
+.informacao { grid-area: informacao; }
+.contacto   { grid-area: contacto; }
+
+/* ---------- Galeria ---------- */
+.galeria-principal {
+  margin: 0;
+  border-radius: var(--raio, 8px);
+  overflow: hidden;
+  background: #eee;
+  aspect-ratio: 16 / 10;
+}
+
+.galeria-principal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galeria-miniaturas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.miniatura {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: calc(var(--raio, 8px) / 2);
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 16 / 10;
+}
+
+.miniatura img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miniatura:hover,
+.miniatura:focus-visible,
+.miniatura.ativa {
+  border-color: var(--cor-primaria, #c0392b);
+}
+
+/* ---------- Resumo ---------- */
+.resumo h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.resumo h1 span {
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0.75;
+}
+
+.preco {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--cor-primaria, #c0392b);
+}
+
+.destaques {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.destaques li {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--cor-borda, #ddd);
+  border-radius: var(--raio, 8px);
+  font-weight: bold;
+}
+
+.destaque-rotulo {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.resumo-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resumo-acoes .btn {
+  text-align: center;
+}
+
+/* Botão secundário (contorno), caso style.css não o defina */
+.btn-secundario {
+  border: 2px solid var(--cor-primaria, #c0392b);
+  color: var(--cor-primaria, #c0392b);
+  background: transparent;
+}
+
+/* ---------- Descrição, ficha técnica e equipamento ---------- */
+.informacao h2,
+.contacto h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.informacao h2:first-child,
+.contacto h2:first-child {
+  margin-top: 0;
+}
+
+.tabela-wrapper {
+  overflow-x: auto;
+}
+
+.ficha-tecnica {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ficha-tecnica th,
+.ficha-tecnica td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--cor-borda, #ddd);
+  text-align: left;
+}
+
+.ficha-tecnica th {
+  width: 45%;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.ficha-tecnica tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.equipamento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* ---------- Contactar o stand ---------- */
+.contacto {
+  padding: 1.25rem;
+  border: 1px solid var(--cor-borda, #ddd);
+  border-radius: var(--raio, 8px);
+  background: var(--cor-fundo, #fff);
+  scroll-margin-top: 1rem;
+}
+
+.form-contacto .campo {
+  margin-bottom: 0.9rem;
+}
+
+.form-contacto label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.form-contacto input,
+.form-contacto textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--cor-borda, #ccc);
+  border-radius: calc(var(--raio, 8px) / 2);
+  font: inherit;
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+  outline: 2px solid var(--cor-primaria, #c0392b);
+  outline-offset: 1px;
+}
+
+.form-contacto .btn {
+  width: 100%;
+}
+
+.voltar {
+  margin-top: 2rem;
+}
+
+.voltar a {
+  color: var(--cor-primaria, #c0392b);
+}
+
+/* Texto só para leitores de ecrã */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Tablet (600px ou mais) ---------- */
+@media (min-width: 600px) {
+  .destaques {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .resumo-acoes {
+    flex-direction: row;
+  }
+
+  .resumo-acoes .btn {
+    flex: 1;
+  }
+
+  .equipamento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Desktop (992px ou mais) ---------- */
+@media (min-width: 992px) {
+  .detalhe-grid {
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas:
+      "galeria    resumo"
+      "informacao contacto";
+    gap: 2rem 2.5rem;
+    align-items: start;
+  }
+
+  .resumo h1 {
+    font-size: 2rem;
+  }
+
+  .destaques {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resumo-acoes {
+    flex-direction: column;
+  }
+
+  /* O formulário acompanha o scroll ao lado da ficha técnica */
+  .contacto {
+    position: sticky;
+    top: 1rem;
+  }
+}
