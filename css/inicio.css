@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Página Início (index.html)
+   Estilos próprios desta página. Header, footer, cores, .btn e .card-veiculo
+   vêm de css/style.css. Abordagem mobile-first, breakpoints 600px e 992px.
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)),
+    var(--cor-primaria, #1e3a8a);
+  color: #fff;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.hero__subtitulo {
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+/* ---------- Pesquisa rápida ---------- */
+.pesquisa {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.pesquisa__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pesquisa label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.pesquisa select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.pesquisa__botao {
+  width: 100%;
+  min-height: 44px;
+}
+
+/* ---------- Veículos em destaque ---------- */
+.destaques {
+  padding: 2.5rem 0;
+}
+
+.destaques__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.destaques__topo h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.destaques__ver-todos {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.grelha-veiculos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.grelha-veiculos .card-veiculo {
+  height: 100%;
+}
+
+/* ---------- Tablet (>= 600px) ---------- */
+@media (min-width: 600px) {
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .pesquisa {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pesquisa__botao {
+    grid-column: 1 / -1;
+  }
+
+  .grelha-veiculos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Desktop (>= 992px) ---------- */
+@media (min-width: 992px) {
+  .hero {
+    padding: 6rem 0;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .pesquisa {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .pesquisa__botao {
+    grid-column: auto;
+    width: auto;
+    padding-inline: 2rem;
+  }
+
+  .grelha-veiculos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GaragemFácil: stand de automóveis usados. Pesquisa por marca e modelo e vê os veículos em destaque.">
+  <title>GaragemFácil | Início</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">GaragemFácil</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu" class="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a class="ativo" href="index.html" aria-current="page">Início</a></li>
+          <li><a href="veiculos.html">Veículos</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="container hero__conteudo">
+        <h1 id="hero-titulo">Encontra o teu próximo carro</h1>
+        <p class="hero__subtitulo">Usados verificados, com garantia e preços claros.</p>
+
+        <form class="pesquisa" action="veiculos.html" method="get" role="search">
+          <div class="pesquisa__campo">
+            <label for="marca">Marca</label>
+            <select id="marca" name="marca">
+              <option value="">Todas as marcas</option>
+              <option value="bmw">BMW</option>
+              <option value="peugeot">Peugeot</option>
+              <option value="renault">Renault</option>
+              <option value="seat">Seat</option>
+              <option value="toyota">Toyota</option>
+              <option value="volkswagen">Volkswagen</option>
+            </select>
+          </div>
+          <div class="pesquisa__campo">
+            <label for="modelo">Modelo</label>
+            <select id="modelo" name="modelo">
+              <option value="">Todos os modelos</option>
+              <option value="208">208</option>
+              <option value="clio">Clio</option>
+              <option value="golf">Golf</option>
+              <option value="leon">Leon</option>
+              <option value="serie-1">Série 1</option>
+              <option value="yaris">Yaris</option>
+            </select>
+          </div>
+          <button class="btn btn-primario pesquisa__botao" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="destaques" aria-labelledby="destaques-titulo">
+      <div class="container">
+        <div class="destaques__topo">
+          <h2 id="destaques-titulo">Veículos em destaque</h2>
+          <a class="destaques__ver-todos" href="veiculos.html">Ver todos</a>
+        </div>
+        <ul class="grelha-veiculos">
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="Volkswagen Golf 1.6 TDI" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>Volkswagen Golf 1.6 TDI</h3>
+                <p class="card-veiculo__info">2019 · Diesel · 98 000 km</p>
+                <p class="card-veiculo__preco">14 900 €</p>
+                <a class="btn" href="veiculo.html?id=1">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="Renault Clio 1.0 TCe" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>Renault Clio 1.0 TCe</h3>
+                <p class="card-veiculo__info">2021 · Gasolina · 42 000 km</p>
+                <p class="card-veiculo__preco">13 500 €</p>
+                <a class="btn" href="veiculo.html?id=2">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="BMW Série 1 116d" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>BMW Série 1 116d</h3>
+                <p class="card-veiculo__info">2018 · Diesel · 115 000 km</p>
+                <p class="card-veiculo__preco">17 900 €</p>
+                <a class="btn" href="veiculo.html?id=3">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="Peugeot 208 e-208" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>Peugeot 208 e-208</h3>
+                <p class="card-veiculo__info">2022 · Elétrico · 21 000 km</p>
+                <p class="card-veiculo__preco">22 900 €</p>
+                <a class="btn" href="veiculo.html?id=4">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="Toyota Yaris Hybrid" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>Toyota Yaris Hybrid</h3>
+                <p class="card-veiculo__info">2020 · Híbrido · 55 000 km</p>
+                <p class="card-veiculo__preco">16 400 €</p>
+                <a class="btn" href="veiculo.html?id=5">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-veiculo">
+              <img src="img/veiculos/sem-foto.svg" alt="Seat Leon 1.5 TSI" width="400" height="260" loading="lazy">
+              <div class="card-veiculo__corpo">
+                <h3>Seat Leon 1.5 TSI</h3>
+                <p class="card-veiculo__info">2020 · Gasolina · 63 000 km</p>
+                <p class="card-veiculo__preco">16 900 €</p>
+                <a class="btn" href="veiculo.html?id=6">Ver detalhes</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>GaragemFácil</strong></p>
+      <p>Rua Exemplo, 123, Lisboa · 210 000 000 · geral@garagemfacil.pt</p>
+      <p>&copy; 2026 GaragemFácil. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
