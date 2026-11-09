@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt">
+<!-- Cabeçalho do documento: codificação, viewport para telemóveis, título, descrição e folhas de estilo -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contactos do GaragemFácil: morada, telefone, email, horário e formulário de contacto.">
   <title>Contactos | GaragemFácil</title>
+  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Estilos próprios da página Contactos -->
   <link rel="stylesheet" href="css/contactos.css">
 </head>
 <body>
+  <!-- HEADER: logótipo em texto, botão hambúrguer (só no mobile) e menu principal -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
+      <!-- Botão hambúrguer: abre e fecha o menu no mobile (controlado por js/main.js) -->
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
+      <!-- Menu de navegação; a classe "ativo" marca a página atual -->
       <nav id="menu" class="site-nav" aria-label="Menu principal">
         <ul>
           <li><a href="index.html">Início</a></li>
@@ -30,7 +36,9 @@
     </div>
   </header>
 
+  <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
   <main>
+    <!-- Banner do topo com o título da página e uma frase de apresentação -->
     <section class="page-banner">
       <div class="container">
         <h1>Contactos</h1>
@@ -38,10 +46,13 @@
       </div>
     </section>
 
+    <!-- Secção principal: informações de contacto e formulário (lado a lado no desktop) -->
     <section class="contactos">
       <div class="container contactos__grid">
+        <!-- Coluna das informações: morada, telefone, email e horário -->
         <div class="contactos__info">
           <h2>Onde estamos</h2>
+          <!-- Dados de contacto; o telefone e o email são links clicáveis -->
           <address>
             <p><strong>Morada:</strong><br>Rua do Stand, 123<br>Coimbra</p>
             <p><strong>Telefone:</strong><br><a href="tel:+351239000000">+351 239 000 000</a></p>
@@ -49,6 +60,7 @@
           </address>
 
           <h3>Horário</h3>
+          <!-- Tabela com o horário de funcionamento -->
           <table class="horario">
             <tbody>
               <tr><th scope="row">Segunda a sábado</th><td>9h00 – 19h00</td></tr>
@@ -57,21 +69,27 @@
           </table>
         </div>
 
+        <!-- Coluna do formulário de contacto -->
         <div class="contactos__form">
           <h2>Envia-nos uma mensagem</h2>
+          <!-- Formulário: os campos com "required" são obrigatórios (validação do browser) -->
           <form action="#" method="post">
+            <!-- Campo: nome -->
             <div class="campo">
               <label for="nome">Nome</label>
               <input type="text" id="nome" name="nome" autocomplete="name" required>
             </div>
+            <!-- Campo: email (o tipo "email" valida o formato) -->
             <div class="campo">
               <label for="email">Email</label>
               <input type="email" id="email" name="email" autocomplete="email" required>
             </div>
+            <!-- Campo: telefone (opcional) -->
             <div class="campo">
               <label for="telefone">Telefone <span class="opcional">(opcional)</span></label>
               <input type="tel" id="telefone" name="telefone" autocomplete="tel">
             </div>
+            <!-- Campo: assunto da mensagem (lista de opções) -->
             <div class="campo">
               <label for="assunto">Assunto</label>
               <select id="assunto" name="assunto">
@@ -82,20 +100,24 @@
                 <option value="outro">Outro</option>
               </select>
             </div>
+            <!-- Campo: mensagem -->
             <div class="campo">
               <label for="mensagem">Mensagem</label>
               <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
             </div>
+            <!-- Botão para enviar o formulário -->
             <button type="submit" class="btn btn-primario">Enviar mensagem</button>
           </form>
         </div>
       </div>
     </section>
 
+    <!-- Secção do mapa: Google Maps embebido com a localização do stand -->
     <section class="contactos-mapa">
       <div class="container">
         <h2>Mapa</h2>
         <div class="mapa">
+          <!-- Mapa do Google Maps; "loading=lazy" só o carrega quando aparece no ecrã -->
           <iframe
             title="Localização do GaragemFácil no mapa"
             src="https://www.google.com/maps?q=Coimbra,Portugal&amp;output=embed"
@@ -106,6 +128,7 @@
     </section>
   </main>
 
+  <!-- FOOTER: apresentação, links de navegação, contactos e direitos de autor -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grelha">
@@ -147,6 +170,7 @@
     </div>
   </footer>
 
+  <!-- Script comum: menu hambúrguer e ano atual no footer -->
   <script src="js/main.js"></script>
 </body>
 </html>

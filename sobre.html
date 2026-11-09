@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt">
+<!-- Cabeçalho do documento: codificação, viewport para telemóveis, título, descrição e folhas de estilo -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Conhece o GaragemFácil: quem somos, a nossa história e a equipa que te ajuda a encontrar o próximo carro.">
   <title>Sobre nós | GaragemFácil</title>
+  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Estilos próprios da página Sobre nós -->
   <link rel="stylesheet" href="css/sobre.css">
 </head>
 <body>
+  <!-- HEADER: logótipo em texto, botão hambúrguer (só no mobile) e menu principal -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
 
+      <!-- Botão hambúrguer: abre e fecha o menu no mobile (controlado por js/main.js) -->
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
+      <!-- Menu de navegação; a classe "ativo" marca a página atual -->
       <nav id="menu" class="site-nav" aria-label="Menu principal">
         <ul>
           <li><a href="index.html">Início</a></li>
@@ -30,7 +36,9 @@
     </div>
   </header>
 
+  <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
   <main>
+    <!-- Banner do topo com o título da página e uma frase de apresentação -->
     <section class="page-banner">
       <div class="container">
         <h1>Sobre nós</h1>
@@ -38,6 +46,7 @@
       </div>
     </section>
 
+    <!-- Secção "A nossa história": texto à esquerda e espaço para imagem à direita (empilhado no mobile) -->
     <section class="sobre-historia">
       <div class="container sobre-historia__grid">
         <div class="sobre-historia__texto">
@@ -45,13 +54,16 @@
           <p>O GaragemFácil nasceu em 2010 como uma pequena oficina de bairro. Com o tempo, os clientes começaram a pedir-nos ajuda para comprar e vender carros, e foi assim que abrimos o nosso stand.</p>
           <p>Hoje temos uma seleção de veículos usados revistos pela nossa equipa, com historial verificado e garantia. Queremos que comprar um carro seja simples, transparente e sem surpresas.</p>
         </div>
+        <!-- Espaço reservado para a fotografia do stand (bloco de cor em CSS) -->
         <div class="sobre-historia__imagem" aria-hidden="true"></div>
       </div>
     </section>
 
+    <!-- Secção "Porquê escolher-nos": quatro cartões com as vantagens do stand -->
     <section class="sobre-valores">
       <div class="container">
         <h2>Porquê escolher-nos</h2>
+        <!-- Grelha de cartões: 1 coluna no mobile, 2 no tablet e 4 no desktop -->
         <ul class="valores-grid">
           <li class="valor">
             <span class="valor__icone" aria-hidden="true">&#10003;</span>
@@ -77,9 +89,11 @@
       </div>
     </section>
 
+    <!-- Secção "A nossa equipa": um cartão por membro com foto, nome e função -->
     <section class="sobre-equipa">
       <div class="container">
         <h2>A nossa equipa</h2>
+        <!-- Grelha da equipa: 1 coluna no mobile, 3 a partir do tablet -->
         <ul class="equipa-grid">
           <li class="membro">
             <div class="membro__foto" aria-hidden="true"></div>
@@ -100,6 +114,7 @@
       </div>
     </section>
 
+    <!-- Chamada para ação: botões para ver os veículos ou contactar o stand -->
     <section class="sobre-cta">
       <div class="container">
         <h2>Encontra o teu próximo carro</h2>
@@ -112,6 +127,7 @@
     </section>
   </main>
 
+  <!-- FOOTER: apresentação, links de navegação, contactos e direitos de autor -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grelha">
@@ -153,6 +169,7 @@
     </div>
   </footer>
 
+  <!-- Script comum: menu hambúrguer e ano atual no footer -->
   <script src="js/main.js"></script>
 </body>
 </html>
