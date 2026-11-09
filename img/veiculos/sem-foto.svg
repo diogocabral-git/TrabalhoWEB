@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#f2f4f5"/>
+  <path d="M95 190h210l-10-38c-3-10-12-17-22-17H160c-9 0-17 5-21 13l-24 42z" fill="#0a4d56" opacity=".85"/>
+  <rect x="85" y="170" width="230" height="35" rx="10" fill="#0a4d56"/>
+  <circle cx="140" cy="208" r="20" fill="#ff8210"/>
+  <circle cx="260" cy="208" r="20" fill="#ff8210"/>
+  <text x="200" y="265" font-family="Arial, sans-serif" font-size="18" fill="#5f6b6d" text-anchor="middle">Sem fotografia</text>
+</svg>
