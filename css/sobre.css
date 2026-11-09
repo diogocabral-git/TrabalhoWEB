@@ -47,14 +47,8 @@
 }
 
 .sobre-historia__imagem {
-  margin: 0;
-}
-
-.sobre-historia__imagem img {
-  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
   border-radius: var(--raio, 8px);
   background: #e5e7eb;
 }
@@ -107,13 +101,11 @@
   text-align: center;
 }
 
-.membro img {
-  display: block;
+.membro__foto {
   width: 160px;
   height: 160px;
   margin: 0 auto 0.75rem;
   border-radius: 50%;
-  object-fit: cover;
   background: #e5e7eb;
 }
 
