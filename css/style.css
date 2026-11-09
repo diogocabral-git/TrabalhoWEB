@@ -33,10 +33,12 @@
   box-sizing: border-box;
 }
 
+/* Deslocação suave ao carregar em links internos (âncoras) */
 html {
   scroll-behavior: smooth;
 }
 
+/* Corpo da página: tipo de letra, cores base e coluna flex para o footer ficar sempre em baixo */
 body {
   margin: 0;
   font-family: var(--fonte);
@@ -49,24 +51,29 @@ body {
   min-height: 100vh;
 }
 
+/* O conteúdo principal ocupa o espaço livre, empurrando o footer para o fundo */
 main {
   flex: 1;
 }
 
+/* Imagens nunca ultrapassam a largura do contentor (importante na responsividade) */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+/* Cor base dos links */
 a {
   color: var(--cor-primaria);
 }
 
+/* Cor dos links ao passar o rato */
 a:hover {
   color: var(--cor-secundaria);
 }
 
+/* Estilo comum a todos os títulos */
 h1,
 h2,
 h3,
@@ -76,19 +83,23 @@ h4 {
   color: var(--cor-primaria);
 }
 
+/* Tamanhos dos títulos no telemóvel (aumentam nas media queries) */
 h1 { font-size: 1.75rem; }
 h2 { font-size: 1.4rem; }
 h3 { font-size: 1.15rem; }
 
+/* Espaço por baixo de cada parágrafo */
 p {
   margin: 0 0 1em;
 }
 
+/* Remove margens e recuo por defeito das listas */
 ul {
   margin: 0;
   padding: 0;
 }
 
+/* Contorno laranja visível ao navegar com o teclado (acessibilidade) */
 :focus-visible {
   outline: 3px solid var(--cor-secundaria);
   outline-offset: 2px;
@@ -115,14 +126,17 @@ ul {
   padding: 0 var(--espaco);
 }
 
+/* Espaçamento vertical de cada secção da página */
 .seccao {
   padding: 2rem 0;
 }
 
+/* Variante de secção com fundo cinzento claro, para alternar secções */
 .seccao--alt {
   background-color: var(--cor-fundo-alt);
 }
 
+/* Espaço por baixo do título de uma secção */
 .titulo-seccao {
   margin-bottom: 1.25rem;
 }
@@ -144,6 +158,7 @@ ul {
     border-color var(--transicao);
 }
 
+/* Botão base ao passar o rato: fundo azul e texto branco */
 .btn:hover {
   background-color: var(--cor-primaria);
   color: #ffffff;
@@ -157,6 +172,7 @@ ul {
   color: #ffffff;
 }
 
+/* Botão principal ao passar o rato: laranja mais escuro */
 .btn-primario:hover,
 .btn-primary:hover {
   background-color: var(--cor-secundaria-escura);
@@ -164,6 +180,7 @@ ul {
   color: #ffffff;
 }
 
+/* Botão que ocupa toda a largura disponível */
 .btn-bloco {
   display: block;
   width: 100%;
@@ -182,6 +199,7 @@ textarea {
   background-color: #ffffff;
 }
 
+/* Campo de formulário selecionado: borda azul e brilho suave */
 input:focus,
 select:focus,
 textarea:focus {
@@ -190,6 +208,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(10, 77, 86, 0.2);
 }
 
+/* Etiquetas dos campos de formulário, por cima de cada campo */
 label {
   display: block;
   margin-bottom: 0.3rem;
@@ -206,6 +225,7 @@ label {
   box-shadow: var(--sombra);
 }
 
+/* Dentro do cabeçalho: logo à esquerda e botão/menu à direita */
 .site-header > .container {
   display: flex;
   align-items: center;
@@ -225,10 +245,12 @@ label {
   text-decoration: none;
 }
 
+/* Parte "Fácil" do logótipo a laranja */
 .logo span {
   color: var(--cor-secundaria);
 }
 
+/* O logótipo mantém a cor ao passar o rato */
 .logo:hover {
   color: var(--cor-primaria);
 }
@@ -249,6 +271,7 @@ label {
   cursor: pointer;
 }
 
+/* As três linhas do botão hambúrguer */
 .menu-toggle span,
 .nav-toggle span {
   display: block;
@@ -265,11 +288,13 @@ label {
   transform: translateY(8px) rotate(45deg);
 }
 
+/* Linha do meio desaparece com o menu aberto */
 .menu-toggle[aria-expanded="true"] span:nth-child(2),
 .nav-toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
 
+/* Linha de baixo roda para formar o "X" */
 .menu-toggle[aria-expanded="true"] span:nth-child(3),
 .nav-toggle[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
@@ -282,16 +307,19 @@ label {
   padding-bottom: 0.75rem;
 }
 
+/* Menu visível quando o JavaScript lhe junta a classe .aberto */
 .site-nav.aberto {
   display: block;
 }
 
+/* Lista de links do menu na vertical (telemóvel) */
 .site-nav ul {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 
+/* Cada link do menu: área grande para tocar e linha separadora */
 .site-nav a {
   display: block;
   padding: 0.75rem 0.5rem;
@@ -301,10 +329,12 @@ label {
   text-decoration: none;
 }
 
+/* O último link não tem linha separadora */
 .site-nav li:last-child a {
   border-bottom: none;
 }
 
+/* Link ao passar o rato e link da página atual ficam a laranja */
 .site-nav a:hover,
 .site-nav a.ativo,
 .site-nav a[aria-current="page"] {
@@ -318,6 +348,7 @@ label {
   gap: 1.25rem;
 }
 
+/* Cartão de veículo: caixa branca com borda, cantos arredondados e sombra */
 .card-veiculo {
   display: flex;
   flex-direction: column;
@@ -329,11 +360,13 @@ label {
   transition: transform var(--transicao), box-shadow var(--transicao);
 }
 
+/* Cartão sobe ligeiramente e ganha sombra ao passar o rato */
 .card-veiculo:hover {
   transform: translateY(-3px);
   box-shadow: var(--sombra-forte);
 }
 
+/* Fotografia do cartão (opcional) com proporção 4:3, recortada para encaixar */
 .card-veiculo > img {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -341,6 +374,7 @@ label {
   background-color: var(--cor-fundo-alt);
 }
 
+/* Zona de texto do cartão, em coluna */
 .card-veiculo__corpo {
   display: flex;
   flex-direction: column;
@@ -348,16 +382,19 @@ label {
   padding: 1rem;
 }
 
+/* Nome do veículo */
 .card-veiculo__corpo h3 {
   margin-bottom: 0.25rem;
 }
 
+/* Linha de informação: ano, combustível e quilómetros */
 .card-veiculo__info {
   color: var(--cor-texto-suave);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
+/* Preço do veículo em destaque, a laranja */
 .card-veiculo__preco {
   font-size: 1.3rem;
   font-weight: 700;
@@ -365,6 +402,7 @@ label {
   margin-bottom: 1rem;
 }
 
+/* Empurra o botão para o fundo do cartão, alinhando cartões com alturas diferentes */
 .card-veiculo__corpo .btn {
   margin-top: auto;
 }
@@ -377,40 +415,48 @@ label {
   color: #e6eeef;
 }
 
+/* Links do rodapé a branco */
 .site-footer a {
   color: #ffffff;
   text-decoration: none;
 }
 
+/* Links do rodapé a laranja ao passar o rato */
 .site-footer a:hover {
   color: var(--cor-secundaria);
 }
 
+/* Títulos das colunas do rodapé */
 .site-footer h2 {
   font-size: 1.05rem;
   color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
+/* Colunas do rodapé: uma por baixo da outra no telemóvel */
 .footer-grelha {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
+/* Listas do rodapé sem marcadores */
 .footer-coluna ul {
   list-style: none;
 }
 
+/* Espaço entre os itens das listas do rodapé */
 .footer-coluna li {
   margin-bottom: 0.4rem;
 }
 
+/* Ícones das redes sociais lado a lado */
 .redes-sociais {
   display: flex;
   gap: 0.75rem;
 }
 
+/* Cada ícone de rede social dentro de um círculo */
 .redes-sociais a {
   display: inline-flex;
   align-items: center;
@@ -421,12 +467,14 @@ label {
   border-radius: 50%;
 }
 
+/* Tamanho e cor dos ícones SVG */
 .redes-sociais svg {
   width: 18px;
   height: 18px;
   fill: currentColor;
 }
 
+/* Linha de direitos de autor no fundo do rodapé */
 .footer-copy {
   margin: 1.5rem 0 0;
   padding-top: 1rem;
@@ -439,17 +487,21 @@ label {
    Tablet (>= 600px)
    ========================================================================== */
 @media (min-width: 600px) {
+  /* Títulos maiores no tablet */
   h1 { font-size: 2rem; }
   h2 { font-size: 1.6rem; }
 
+  /* Mais espaço vertical nas secções */
   .seccao {
     padding: 3rem 0;
   }
 
+  /* Grelha de veículos com 2 colunas no tablet */
   .grelha-veiculos {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Rodapé em 2 colunas no tablet */
   .footer-grelha {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -459,8 +511,10 @@ label {
    Desktop (>= 992px)
    ========================================================================== */
 @media (min-width: 992px) {
+  /* Título principal maior no desktop */
   h1 { font-size: 2.5rem; }
 
+  /* Logótipo um pouco maior no desktop */
   .logo {
     font-size: 1.75rem;
   }
@@ -471,6 +525,7 @@ label {
     display: none;
   }
 
+  /* Menu sempre visível e alinhado à direita do logo */
   .site-nav,
   .site-nav.aberto {
     display: block;
@@ -478,26 +533,31 @@ label {
     padding-bottom: 0;
   }
 
+  /* Links do menu lado a lado na horizontal */
   .site-nav ul {
     flex-direction: row;
     gap: 0.5rem;
   }
 
+  /* Links do menu sem linha separadora e com cantos arredondados */
   .site-nav a {
     padding: 0.5rem 0.9rem;
     border-bottom: none;
     border-radius: var(--raio);
   }
 
+  /* Página atual com fundo cinzento claro */
   .site-nav a.ativo,
   .site-nav a[aria-current="page"] {
     background-color: var(--cor-fundo-alt);
   }
 
+  /* Grelha de veículos com 3 colunas no desktop */
   .grelha-veiculos {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  /* Rodapé em 3 colunas no desktop (a primeira mais larga) */
   .footer-grelha {
     grid-template-columns: 2fr 1fr 1fr;
   }
