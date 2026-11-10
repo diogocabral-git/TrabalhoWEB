@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <!-- Codificação de caracteres (para aceitar acentos como "á" e "ç") -->
+  <meta charset="UTF-8">
+
+  <!-- Faz a página adaptar-se à largura do ecrã em telemóveis e tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título que aparece no separador do browser e nos resultados de pesquisa -->
+  <title>Peugeot 308 1.2 PureTech Allure | GaragemFácil</title>
+
+  <!-- Descrição curta da página para os motores de pesquisa -->
+  <meta name="description" content="Peugeot 308 1.2 PureTech Allure de 2021, gasolina, 45 000 km. Veja as fotos, a ficha técnica e contacte o stand GaragemFácil.">
+
+  <!-- Estilos comuns a todo o site (header, footer, botões, cores) -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Estilos próprios desta página de detalhe -->
+  <link rel="stylesheet" href="../css/veiculo.css">
+</head>
+<body>
+
+  <!-- ===== HEADER =====
+       Cabeçalho comum a todas as páginas (copiado de modelo.html).
+       Tem o logótipo em texto, o botão do menu hambúrguer (só aparece
+       no telemóvel) e o menu principal com "Veículos" marcado como ativo. -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logótipo em texto: leva de volta à página inicial -->
+      <a href="inicio.html" class="logo" aria-label="GaragemFácil - página inicial">Garagem<span>Fácil</span></a>
+
+      <!-- Botão hambúrguer: as 3 <span> são as 3 riscas; o js/main.js abre e fecha o menu -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Menu principal do site -->
+      <nav id="menu" class="site-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="inicio.html">Início</a></li>
+          <li><a href="veiculos.html" class="ativo" aria-current="page">Veículos</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL =====
+       Tudo o que é específico desta página de detalhe do veículo. -->
+  <main class="container detalhe">
+
+    <!-- Caminho de navegação (breadcrumb): mostra onde o utilizador está
+         e permite voltar à página inicial ou à listagem -->
+    <nav class="breadcrumb" aria-label="Caminho">
+      <ol>
+        <li><a href="inicio.html">Início</a></li>
+        <li><a href="veiculos.html">Veículos</a></li>
+        <li aria-current="page">Peugeot 308</li>
+      </ol>
+    </nav>
+
+    <!-- Grelha da página: no telemóvel as 4 secções ficam empilhadas;
+         no desktop ficam em 2 colunas (ver css/veiculo.css) -->
+    <div class="detalhe-grid">
+
+      <!-- GALERIA DE FOTOS
+           Espaço grande para a foto principal e 4 miniaturas por baixo.
+           Por agora são espaços reservados (sem imagens); ao clicar numa
+           miniatura, o js/veiculo.js mostra essa vista no espaço grande. -->
+      <section class="galeria" aria-label="Fotografias do veículo">
+        <!-- Espaço da foto principal -->
+        <div class="galeria-principal foto-placeholder" id="foto-principal" role="img" aria-label="Espaço para a foto do Peugeot 308: frente">
+          <span>Frente</span>
+        </div>
+
+        <!-- Miniaturas: cada botão guarda em data-legenda o nome da vista -->
+        <ul class="galeria-miniaturas">
+          <li><button type="button" class="miniatura foto-placeholder ativa" data-legenda="Frente" aria-label="Ver foto da frente"><span>Frente</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Lateral" aria-label="Ver foto da lateral"><span>Lateral</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Traseira" aria-label="Ver foto da traseira"><span>Traseira</span></button></li>
+          <li><button type="button" class="miniatura foto-placeholder" data-legenda="Interior" aria-label="Ver foto do interior"><span>Interior</span></button></li>
+        </ul>
+      </section>
+
+      <!-- RESUMO
+           Nome do carro, preço, os 4 dados mais importantes e os botões
+           para contactar o stand. -->
+      <section class="resumo" aria-labelledby="titulo-veiculo">
+        <!-- Nome do carro (marca e modelo) com a versão por baixo -->
+        <h1 id="titulo-veiculo">Peugeot 308 <span>1.2 PureTech Allure</span></h1>
+
+        <!-- Preço em destaque -->
+        <p class="preco">16 900 €</p>
+
+        <!-- Destaques: cada caixa tem um rótulo pequeno e o valor -->
+        <ul class="destaques">
+          <li><span class="destaque-rotulo">Ano</span> 2021</li>
+          <li><span class="destaque-rotulo">Quilómetros</span> 45 000 km</li>
+          <li><span class="destaque-rotulo">Combustível</span> Gasolina</li>
+          <li><span class="destaque-rotulo">Caixa</span> Manual</li>
+        </ul>
+
+        <!-- Botões de ação: um salta para o formulário, o outro liga para o stand -->
+        <div class="resumo-acoes">
+          <a href="#contactar" class="btn btn-primary">Contactar o stand</a>
+          <a href="tel:+351239000000" class="btn btn-secundario">Ligar: 239 000 000</a>
+        </div>
+      </section>
+
+      <!-- INFORMAÇÃO DO VEÍCULO
+           Descrição em texto, ficha técnica em tabela e lista de equipamento. -->
+      <section class="informacao">
+        <!-- Descrição do carro -->
+        <h2>Descrição</h2>
+        <p>Peugeot 308 com um único dono e revisões feitas na marca. Está em muito bom estado, tem o livro de revisões completo e é entregue com garantia de 18 meses. Inclui ecrã tátil com Apple CarPlay e Android Auto, sensores de estacionamento e cruise control.</p>
+
+        <!-- Ficha técnica: tabela com uma linha por característica.
+             O "tabela-wrapper" deixa fazer scroll lateral se não couber no ecrã. -->
+        <h2>Ficha técnica</h2>
+        <div class="tabela-wrapper">
+          <table class="ficha-tecnica">
+            <!-- Título da tabela, escondido no ecrã mas lido pelos leitores de ecrã -->
+            <caption class="sr-only">Ficha técnica do Peugeot 308</caption>
+            <tbody>
+              <tr><th scope="row">Marca</th><td>Peugeot</td></tr>
+              <tr><th scope="row">Modelo</th><td>308</td></tr>
+              <tr><th scope="row">Versão</th><td>1.2 PureTech Allure</td></tr>
+              <tr><th scope="row">Ano</th><td>2021</td></tr>
+              <tr><th scope="row">Quilómetros</th><td>45 000 km</td></tr>
+              <tr><th scope="row">Combustível</th><td>Gasolina</td></tr>
+              <tr><th scope="row">Potência</th><td>130 cv</td></tr>
+              <tr><th scope="row">Cilindrada</th><td>1199 cm³</td></tr>
+              <tr><th scope="row">Caixa</th><td>Manual, 6 velocidades</td></tr>
+              <tr><th scope="row">Portas</th><td>5</td></tr>
+              <tr><th scope="row">Lugares</th><td>5</td></tr>
+              <tr><th scope="row">Cor</th><td>Cinzento</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Lista de equipamento (1 coluna no telemóvel, 2 a partir de 600px) -->
+        <h2>Equipamento</h2>
+        <ul class="equipamento">
+          <li>Ar condicionado automático</li>
+          <li>Sensores de estacionamento traseiros</li>
+          <li>Cruise control</li>
+          <li>Apple CarPlay e Android Auto</li>
+          <li>Faróis LED</li>
+          <li>Jantes de liga leve 16"</li>
+        </ul>
+      </section>
+
+      <!-- CONTACTAR O STAND
+           Formulário para o cliente mostrar interesse neste carro.
+           O id="contactar" é o destino do botão "Contactar o stand" do resumo. -->
+      <aside id="contactar" class="contacto" aria-labelledby="titulo-contacto">
+        <h2 id="titulo-contacto">Contactar o stand</h2>
+        <p>Tem interesse neste carro? Deixe os seus dados e entramos em contacto consigo.</p>
+
+        <!-- Formulário: cada campo tem a sua etiqueta (label) ligada pelo "for"/"id".
+             "required" obriga a preencher o campo antes de enviar. -->
+        <form class="form-contacto" action="#" method="post">
+          <!-- Nome do cliente (obrigatório) -->
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+          </div>
+
+          <!-- Email do cliente (obrigatório; o browser valida o formato) -->
+          <div class="campo">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <!-- Telefone (opcional) -->
+          <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+          </div>
+
+          <!-- Mensagem, já preenchida com o carro desta página -->
+          <div class="campo">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required>Olá, tenho interesse no Peugeot 308 1.2 PureTech Allure (2021). Ainda está disponível?</textarea>
+          </div>
+
+          <!-- Botão de envio -->
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+        </form>
+      </aside>
+
+    </div>
+
+    <!-- Ligação para voltar à listagem de veículos -->
+    <p class="voltar"><a href="veiculos.html">&larr; Voltar à listagem de veículos</a></p>
+  </main>
+
+  <!-- ===== FOOTER =====
+       Rodapé comum a todas as páginas (copiado de modelo.html):
+       apresentação e redes sociais, navegação e contactos do stand. -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grelha">
+        <!-- Coluna 1: apresentação do stand e redes sociais -->
+        <div class="footer-coluna">
+          <h2>GaragemFácil</h2>
+          <p>O teu stand automóvel virtual. Consulta, pesquisa e compara veículos sem sair de casa.</p>
+          <!-- Ícones das redes sociais desenhados em SVG -->
+          <div class="redes-sociais">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.3 2.2 2.2 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.6 2.2 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.1 5.7-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.6-2.2-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.6.1 3.9 1.4 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.6-1.4 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.6-.1-3.9-1.4-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.6 1.4-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: ligações para as páginas do site -->
+        <div class="footer-coluna">
+          <h2>Navegação</h2>
+          <ul>
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="veiculos.html">Veículos</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: morada, telefone, email e horário -->
+        <div class="footer-coluna">
+          <h2>Contactos</h2>
+          <ul>
+            <li>Rua do Stand, 123, Coimbra</li>
+            <li><a href="tel:+351239000000">+351 239 000 000</a></li>
+            <li><a href="mailto:geral@garagemfacil.pt">geral@garagemfacil.pt</a></li>
+            <li>Seg–Sáb: 9h00–19h00</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Direitos de autor (o ano é atualizado pelo js/main.js) -->
+      <p class="footer-copy">&copy; <span id="ano-atual">2026</span> GaragemFácil · Trabalho de Aplicações Web</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript comum (menu hambúrguer e ano no rodapé) -->
+  <script src="../js/main.js"></script>
+
+  <!-- JavaScript desta página (galeria de fotos) -->
+  <script src="../js/veiculo.js"></script>
+</body>
+</html>
