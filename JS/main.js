@@ -59,4 +59,40 @@ document.addEventListener("DOMContentLoaded", function () {
   if (ano) {
     ano.textContent = new Date().getFullYear();
   }
+     /* ---------- Pesquisa rápida (Início): modelos conforme a marca ---------- */
+
+  /* Procura as caixas "Marca" e "Modelo" da pesquisa (só existem na página inicial) */
+  var selMarca = document.getElementById("marca");
+  var selModelo = document.getElementById("modelo");
+
+  if (selMarca && selModelo) {
+    /* Guarda todas as opções de modelo, tal como estão escritas no HTML */
+    var todosModelos = Array.prototype.slice.call(selModelo.options);
+
+    /* Volta a encher a caixa "Modelo" só com os modelos da marca escolhida */
+    function atualizarModelos() {
+      var marca = selMarca.value;
+      var escolhido = selModelo.value;
+
+      /* Esvazia a caixa e volta a pôr só as opções que interessam:
+         "Todos os modelos" (não tem data-marca) e os modelos da marca escolhida.
+         Se a marca for "Todas as marcas" (valor vazio), põe todos os modelos */
+      selModelo.innerHTML = "";
+      todosModelos.forEach(function (opcao) {
+        if (!opcao.dataset.marca || !marca || opcao.dataset.marca === marca) {
+          selModelo.appendChild(opcao);
+        }
+      });
+
+      /* Mantém o modelo que estava escolhido; se já não for desta marca, volta a "Todos os modelos" */
+      selModelo.value = escolhido;
+      if (selModelo.selectedIndex === -1) {
+        selModelo.selectedIndex = 0;
+      }
+    }
+
+    /* Atualiza os modelos sempre que se muda a marca, e uma vez ao abrir a página */
+    selMarca.addEventListener("change", atualizarModelos);
+    atualizarModelos();
+  }
 });
