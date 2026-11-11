@@ -122,6 +122,12 @@
 /* Cada item da lista estica para os cartões da mesma linha terem a mesma altura */
 .grelha-veiculos > li {
   display: flex;
+/* Cartões escondidos pelos filtros (atributo hidden): o display: flex de cima
+   anulava o hidden, por isso os cartões continuavam a aparecer */
+.grelha-veiculos > li[hidden] {
+  display: none;
+}
+   
 }
 
 /* O cartão ocupa toda a largura do item da lista */
