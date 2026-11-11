@@ -26,6 +26,19 @@
     var aberto = filtros.classList.toggle('aberto');
     toggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
   });
+     // Pesquisa rápida vinda da página Início (ex.: veiculos.html?marca=bmw&modelo=serie-1)
+  var parametros = new URLSearchParams(window.location.search);
+  var marcaPesquisa = (parametros.get('marca') || '').toLowerCase();
+  var modeloPesquisa = (parametros.get('modelo') || '').toLowerCase();
+
+  // Põe um texto em minúsculas, sem acentos e com hífens no lugar dos espaços
+  // (ex.: "BMW Série 1 118d" -> "bmw-serie-1-118d") para o comparar com o modelo do URL
+  function normalizar(texto) {
+    return texto.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-');
+  }
+
 
   // Mostra só os cartões que cumprem todos os filtros escolhidos
   function aplicarFiltros() {
@@ -43,7 +56,10 @@
         (!marca || c.marca === marca) &&
         (!combustivel || c.combustivel === combustivel) &&
         Number(c.ano) >= anoMin &&
-        Number(c.preco) <= precoMax;
+        Number(c.preco) <= precoMax &&
+        // ...e também a marca e o modelo da pesquisa rápida, se vieram da página Início
+        (!marcaPesquisa || c.marca.toLowerCase() === marcaPesquisa) &&
+        (!modeloPesquisa || normalizar(li.querySelector('h3').textContent).indexOf(modeloPesquisa) !== -1);
 
       // Esconde ou mostra o cartão e conta os que ficam visíveis
       li.hidden = !mostra;
@@ -62,6 +78,11 @@
   // Botão "Aplicar": filtra sem recarregar a página
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    // Se a marca do painel for diferente da pesquisa rápida, a pesquisa rápida deixa de contar
+    if (form.marca.value.toLowerCase() !== marcaPesquisa) {
+      marcaPesquisa = '';
+      modeloPesquisa = '';
+    }
     aplicarFiltros();
     // No mobile, fecha o painel depois de aplicar para se verem os resultados
     filtros.classList.remove('aberto');
@@ -70,7 +91,21 @@
 
   // Botão "Limpar": repõe os campos e volta a mostrar todos os veículos
   form.addEventListener('reset', function () {
+    // Esquece também a pesquisa rápida que veio da página Início
+    marcaPesquisa = '';
+    modeloPesquisa = '';
     // O reset só limpa os campos depois deste evento, por isso espera um instante
     setTimeout(aplicarFiltros, 0);
   });
+   
+  // Se a página abriu a partir da pesquisa rápida: escolhe essa marca no painel
+  // (se existir na lista) e filtra logo os veículos
+  if (marcaPesquisa || modeloPesquisa) {
+    Array.prototype.forEach.call(form.marca.options, function (opcao) {
+      if (opcao.value.toLowerCase() === marcaPesquisa) {
+        form.marca.value = opcao.value;
+      }
+    });
+    aplicarFiltros();
+  }
 })();
